@@ -14,7 +14,7 @@ En la máquina ***Kali***, si no estamos conectados a la app, abrimos el navegad
 http://192.168.20.80:3000
 ```
 
-En la página inicial, se muestran los diferentes zumos que ofrece la tienda. Si haces clic en el logo que aparece arriba a la izquierd, te llevará siempre al inicio de la página.
+En la página inicial, se muestran los diferentes zumos que ofrece la tienda. Si haces clic en el logo que aparece arriba a la izquierda, te llevará siempre al inicio de la página.
 
 Cuando hacemos clic en cualquier producto, se abre una nueva ventana que muestra los detalles del producto elegido. Estos detalles incluyen opiniones de los clientes, siempre que existan. Por ejemplo, localiza y selecciona ***OWASP Juice Shop "King of the Hill" Facemask*** y podrás ver las valoraciones.
 
@@ -57,3 +57,5 @@ Finaliza el proceso de compra.
 Esto es lo que debes saber sobre como funcina la app. Para finalizar estudia el menú ***Account*** y observa las opciones disponibles.
 
 ***FIN DEL LABORATORIO***
+
+[Vamos al siguiente lab](../25/lab-25-C.md)
