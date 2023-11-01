@@ -109,6 +109,7 @@ La aplicación debe funcionar.
 
 ![App open](../img/lab-25-A/202210031928.png)
 
+
 ## Ejercicio 3: Instalación de OWASP ZAP.
 
 ***ZAP*** o ***Zed Attack Proxy*** es una herramienta gratuita proveniente del proyecto ***OWASP*** cuya finalidad es realizar pentesting sobre aplicaciones web. Se instala como un proxy, interceptando el tráfico entre el navegador del usuario y la aplicación web que estamos evaluando.
@@ -118,6 +119,9 @@ En el mercado disponemos de ***Burp***, otra herramienta que hace lo mismo, pero
 Procedemos a instalar ***ZAP***.
 
 En la máquina ***Kali***, abrimos una nueva terminal (la anterior está ocupada por una sesión ***SSH*** contra ***Ubu_srv_JUICE_SHOP***) y escribimos.
+```
+sudo apt-get -y update
+```
 ```
 sudo apt-get -y install zaproxy
 ```
