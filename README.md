@@ -13,3 +13,38 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Importación y configuracion de la VM ***Ubu_srv_JUICE_SHOP***.
    - Clonado del repositorio de GitHub.
 
+## Carpeta 25. Ataque a aplicaciones Web.
+
+1. Laboratorio 25-A: ***OWASP*** y la "Tienda de Zumos". Los ejercicios a realizar son:
+   - ¿Qué es ***Juice Shop***?
+   - Instalación de ***Juice Shop***.
+   - Instalación de ***OWASP ZAP***.
+
+2. Laboratorio 25-B: Aprender a usar ***Juice Shop***.
+
+3. Laboratorio 25-C: Descubrir el ***ScoreBoard*** y la sección ***Admin***.
+   - Descubrir el "Scoreboard"
+   - Descubrir la sección "Admin"
+
+4. Laboratorio 25-D: Ataques de Inyección SQL (***SQL Injection***).
+   - Hacer un pedido de la oferta especial de navidad de 2014.
+   - Exfiltrar el esquema de la base de datos.
+   - Obtener las credenciales de todos los usuarios.
+   - Iniciar sesión con el usuario administrador.
+   - Iniciar sesión con un usuario que ni siquiera existe.
+
+5. Laboratorio 25-E: Romper la autenticación (***Broken Authentication***).
+   - Cambiar el password del usuario ***Bender*** sin usar ni inyección de SQL ni la opción ***Contraseña olvidada***.
+   - Romper la autenticación 2FA.
+
+6. Laboratorio 25-F: Exposición de datos sensibles (***Sensitive Data Exposure***).
+   - Acceder a un documento confidencial.
+   - Ganar acceso a los logs del servidor.
+   - Fuga de información a través de la API.
+   - Acceder a un archivo de backup olvidado por un programador.
+
+7. Laboratorio 25-G: Validación de datos de entrada inapropiada (***Improper Input Validation***).
+   - Registrar a un usuario con privilegios de administrador. 
+   - Hacer un pedido que te hará rico.
+   
+8. Laboratorio 25-H: Romper la autorización (***Broken Access Control***).
