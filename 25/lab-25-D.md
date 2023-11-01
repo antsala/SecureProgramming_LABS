@@ -42,14 +42,14 @@ Usaremos ***ZAP***, así que lo abrimos y conectamos a la siguiente URL.
 http://192.168.20.80:3000/search
 ```
 
-Busca información sobre el producto **King***  usando la sección de búsqueda de la aplicación. Cuando lo encontremos, en el HUD, hacemos clic en ***History***, y filtramos por.
+En el HUD, hacemos clic en ***History***, y filtramos por.
 ```
 products
 ```
 
 ![Filtro](../img/lab-25-D/202211222021.png)
 
-Esta request servirá para localizar productos. Como podemos ver, hace uso del parámetro ***p***. Ahora hacemos clic en la request que tenemos filtrada en el historial. Aparecerá un cuadro de diálogo que nos permite ver la ***Request*** original, así como la ***Response*** que se recibió. Si hacemos clic en la Response podeos observar cómo aparece la lista completa de productos devuelta desde la base de datos, tal y como se puede observar en la siguiente imagen.
+Esta request servirá para localizar productos. Como podemos ver, hace uso del parámetro ***q***. Ahora hacemos clic en la request que tenemos filtrada en el historial. Aparecerá un cuadro de diálogo que nos permite ver la ***Request*** original, así como la ***Response*** que se recibió. Si hacemos clic en la Response podemos observar cómo aparece la lista completa de productos devuelta desde la base de datos, tal y como se puede observar en la siguiente imagen.
 
 ![Datos](../img/lab-25-D/202211222041.png)
 
@@ -57,7 +57,7 @@ Si prefieres, puedes hacer que ZAP use el propio navegador para mostrar los dato
 
 ![Replay in Browser](../img/lab-25-D/202211222043.png)
 
-Vamos a jugar con el parámetro ***p***, solicitando información sobre el zumo de limón. Para ello, en la barra de navegación, escribimos lo siguiente.
+Vamos a jugar con el parámetro ***q***, solicitando información sobre el zumo de limón. Para ello, en la barra de navegación, escribimos lo siguiente.
 ```
 https://192.168.20.80:3000/rest/products/search?q=lemon
 ```
@@ -99,7 +99,7 @@ Ahora procedemos a realizar el hackeo, consistente en hacer el pedido de este pr
 http://192.168.20.80:3000/#/login
 ```
 
-Inicia sesión con el usuario que has creado. Vamos a añadir un producto normal en el carrito, para evitar problemas cuando agregemos es que está descatalogado. Por ejemplo, agrega ***Lemon Juice (500ml)***.
+Inicia sesión con el usuario que has creado. Vamos a añadir un producto normal en el carrito, para evitar problemas cuando agreguemos es que está descatalogado. Por ejemplo, agrega ***Lemon Juice (500ml)***.
 
 ![Lemon Juice](../img/lab-25-D/202211231924.png)
 
@@ -274,7 +274,7 @@ En el siguiente ejercicio intentaremos revertir el hash para obtener la contrase
 
 Los algoritmos de hashing más utilizados como NTLN, md5, sha256, etc. son algoritmos de ***puerta única***. Esto quiere decir que matemáticamente es imposible determinar la combinación de caracteres que producen un hash concreto. 
 
-Las ***Tablas Rainbow*** contienen billones que hashes precalculados, con sus respectiva combinaciones de caracteres en texto en claro. Si el número de caracteres que forman la contraseña no es muy alto (menos de 10), existe una altísima probabilidad de que la tabla rainbow contenga la combinacion de password y hash en su base de datos, lo que hace muy simple reventar las passwords.
+Las ***Tablas Rainbow*** contienen billones que hashes precalculados, con sus respectivas combinaciones de caracteres en texto en claro. Si el número de caracteres que forman la contraseña no es muy alto (menos de 10), existe una altísima probabilidad de que la tabla rainbow contenga la combinacion de password y hash en su base de datos, lo que hace muy simple reventar las passwords.
 
 Conéctate a la siguiente web (en este caso no es necesario usar ZAP)
 ```
@@ -344,12 +344,4 @@ Haciendo clic en el icono del carrito, podrás comprobar que la aplicación te h
 
 ***FIN DEL LABORATORIO***
 
-https://pwning.owasp-juice.shop/part2/injection.html
-https://pwning.owasp-juice.shop/appendix/solutions.html
-
-
-
-
-
-
-
+[Vamos al siguiente lab](../25/lab-25-E.md)
