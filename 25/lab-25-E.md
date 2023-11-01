@@ -7,7 +7,7 @@ Requisitos:
 2. Máquina ***Kali Linux***.
 3. Máquina ***Ubu_srv_JUICE_SHOP***
 
-Las debilidades en la autenticación permiten al actor de la amenaza ganar suplantar la identidad de un usuario de la aplicación. Para conseguir este objetivo se pueden recorrer diversos caminos. En los siguientes ejercicios exponemos algunos de ellos a modo de ejemplo.
+Las debilidades en la autenticación permiten al actor de la amenaza suplantar la identidad de un usuario de la aplicación. Para conseguir este objetivo se pueden recorrer diversos caminos. En los siguientes ejercicios exponemos algunos de ellos a modo de ejemplo.
 
 ## Ejercicio 1:  Cambiar el password del usuario ***Bender*** sin usar ni inyección de SQL ni la opción Contraseña olvidada.
 
@@ -232,3 +232,5 @@ Por último, escribimos dicho código en el formulario de la aplicación y ya es
 ![login](../img/lab-25-E/202211262112.png)
 
 ***FIN DEL LABORATORIO***
+
+[Vamos al siguiente lab](../25/lab-25-F.md)
