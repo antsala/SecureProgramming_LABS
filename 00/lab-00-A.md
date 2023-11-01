@@ -100,3 +100,51 @@ Es el momento de comprobar si la máquina tiene conexión con Internet. (Nota: C
 ```
 ping www.google.es
 ```
+
+## Ejercicio 5. Importación y configuracion de la VM ubu_srv_JUICE_SHOP.
+
+En VirtualBox, elegimos la opción de menú ***Archivo/Importar servicio virtualizado***. Elegimos el archivo ***ubu_srv_01.ova***, que hemos descargado previamente, y hacemos clic en ***Siguiente***.  En ***Política de dirección MAC*** elegimos ***Incluir todas las direcciones de adaptador de red***. Repasamos el resto de la configuración y hacemos clic en ***Importar***.
+
+En la lista de máquinas virtuales, seleccionamos ***ubu_srv_JUICE_SHOP*** y comprobamos la  configuración. Los valores más importantes son los siguientes:
+
+* *General*: Es una VM con sistema operativo ***Ubuntu Server 20.04***.
+
+* *Sistema*: Tiene asignada ***3 GB RAM*** y ***1 cores***. En función de la capacidad de tu hardware podrías bajarla a ***1 GB RAM***.
+* *Red*: Su primera tarjeta de red está conectada a la ***Red interna*** llamada ***Laboratorio***.
+
+En VirtualBox, con la máquina virtual seleccionada, hacemos clic en el botón ***configuración***, y en el panel izquierdo del cuadro de diálogo, seleccionamos ***Red***. La pestaña llamada ***Adaptador 1*** es la que está asociada con la interfaz de red que conecta a red ***laboratorio***. Debemos asegurar que en ***Conectado a*** aparece ***Red Interna*** y, en el ***nombre*** de la red interna, aparece ***Laboratorio***. Si no fuera así, corregirlo convenientemente.
+
+La tarjeta tiene configurada en el sistema operativo la dirección IP ***192.168.20.80*** (de la red de laboratorio).
+
+
+Guardamos la configuración haciendo clic en ***Aceptar***. 
+
+Iniciamos la VM ***ubu_srv_JUICE_SHOP***.
+
+Iniciamos sesión con el usuario:
+```
+antonio
+```
+
+y el password:
+```
+Pa55w.rd
+``` 
+
+Con esto hemos terminado la importación y configuración de la máquina Ubu_srv_JUICE_SHOP.
+
+## Ejercicio 6: Clonado del repositorio de GitHub.
+
+Algunos laboratorios requieren tener ciertos archivos presentes en la máquina virtual. La forma más efectiva de conseguirlo es clonar el repositorio en dicha máquina virtual.
+
+Abre una terminal y asegurate que el comando ***git*** está presente.
+Nota: Si no estuviera instalado, descárgalo e instálalo.
+```
+git --version
+```
+
+```
+cd $HOME
+
+git clone https://github.com/antsala/SecureProgramming_LABS.git
+```
