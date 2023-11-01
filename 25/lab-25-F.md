@@ -5,7 +5,7 @@
 Requisitos:
 1. Máquina ***Router-Ubu***.
 2. Máquina ***Kali Linux***.
-3. Máquina ***Ubu_srv_01***
+3. Máquina ***Ubu_srv_JUICE_SHOP***
 
 Los documentos que son accesibles debido a vulnerabilidades o malas configuraciones son de incalculable valor para el actor de la amenaza. Además de la información que podría tener el propio documento, puede ofrecer pistas para conseguir mayores objetivos.
 
@@ -24,7 +24,7 @@ Como siempre iniciamos ***ZAP***.
 
 Realiza con ZAP una exploración manual sobre la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 Según aprendiste en el tutorial de HUD, ZAP tiene dos tipos de herramientas para determinar todos los recursos accesibles en el sitio web que estás atacando. Estos son:
@@ -37,7 +37,7 @@ Está claro entonces, que la mejor forma de buscar documentos que estén expuest
 
 ![Spider](../img/lab-25-F/202211271043.png)
 
-Se muestra un mensaje indicando que la aplicación (192.168.20.60:3000) no está en ***scope*** y nos pregunta si queremos ponerla en ámbito. Esto debe ser así para que el spider no agregue los links que puedan aparecer en la aplicación y que tengan como destino URLs externas a la misma, como pudieran ser enlaces a Google u otros servicios de Internet. Hacemos clic en el botón ***Start***, que agregará la aplicación al ***scope*** e iniciará el descubrimiento.
+Se muestra un mensaje indicando que la aplicación (192.168.20.80:3000) no está en ***scope*** y nos pregunta si queremos ponerla en ámbito. Esto debe ser así para que el spider no agregue los links que puedan aparecer en la aplicación y que tengan como destino URLs externas a la misma, como pudieran ser enlaces a Google u otros servicios de Internet. Hacemos clic en el botón ***Start***, que agregará la aplicación al ***scope*** e iniciará el descubrimiento.
 
 ![Scope](../img/lab-25-F/202211271048.png)
 
@@ -59,11 +59,11 @@ Pasado un rato (5 minutos) vamos a ver las URLs que ha descubierto el spider. Pa
 
 ![Sites](../img/lab-25-F/202211271108.png)
 
-En la lista de sitios, hacemos clic en el botón ***+*** correspondiente a la aplicación que estamos hackeando (http://192.168.20.60:3000).
+En la lista de sitios, hacemos clic en el botón ***+*** correspondiente a la aplicación que estamos hackeando (http://192.168.20.80:3000).
 
 ![+](../img/lab-25-F/202211271109.png)
 
-Ahora podemos ver todas las requests que ha hecho el spider al ir recorriendo los links de la aplicación. Es cuestión de leerlas detenidamente con la intención de localizar algún archivo que tenga especial interés para el actor de la amenaza. En nuestro ejemplo, vemos que hay una serie de peticiones interesantes en la ruta ***http://192.168.20.60:3000/ftp***. Concretamente nos llama la atención el documento ***acquisitions.md***.
+Ahora podemos ver todas las requests que ha hecho el spider al ir recorriendo los links de la aplicación. Es cuestión de leerlas detenidamente con la intención de localizar algún archivo que tenga especial interés para el actor de la amenaza. En nuestro ejemplo, vemos que hay una serie de peticiones interesantes en la ruta ***http://192.168.20.80:3000/ftp***. Concretamente nos llama la atención el documento ***acquisitions.md***.
 
 ![ftp](../img/lab-25-F/202211271115.png)
 
@@ -73,7 +73,7 @@ Hacemos clic en dicha request, y como se puede ver en la imagen. Es un documento
 
 Ahora solo queda conectar a la siguiente URL para exfiltrar el documento.
 ```
-http://192.168.20.60:3000/ftp/acquisitions.md
+http://192.168.20.80:3000/ftp/acquisitions.md
 ```
 
 ![documento](../img/lab-25-F/202211271119.png)
@@ -93,7 +93,7 @@ Como siempre iniciamos ***ZAP***.
 
 Realiza con ZAP una exploración manual sobre la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 Hemos visto que el HUD de ZAP es una herramienta muy cómoda de usar, pero es el momento de usar la herramienta completa. Para ello, localiza la ventana en la que se ejecuta ZAP, que debe ser como la que muestra la imagen.
@@ -102,7 +102,7 @@ Hemos visto que el HUD de ZAP es una herramienta muy cómoda de usar, pero es el
 
 Las arañas solo son efectivas si la URL aparece en un link, ya sea de HTML o generado por javascript. Por lo tanto, pueden existir directorios en el sitio que estamos estudiando que permanezcan ocultos porque estos no aparecen en ningún link. La única forma de descubrirlos es por medio de un ataque de fuerza bruta, consistente en usar un archivo o diccionario que contiene nombres de directorios habituales (login, logout, ...) y tener suerte en el sentido de que el programador haya usado nombres habituales para los directorios de la aplicación.
 
-Para activar esta herramienta, hacemos clic con boton derecho en la aplicación que deseamos estudiar, en nuestro caso es ***http://192.168.20.60:3000*** y elegimos la opción ***Attack/Forced Browse Directory (and Children)***.
+Para activar esta herramienta, hacemos clic con boton derecho en la aplicación que deseamos estudiar, en nuestro caso es ***http://192.168.20.80:3000*** y elegimos la opción ***Attack/Forced Browse Directory (and Children)***.
 
 ![Forced browse](../img/lab-25-F/202211271210.png)
 
@@ -115,7 +115,7 @@ En la parte inferior, elegimos como lista ***directory-list-1.0.txt*** y hacemos
 
 De todos los directorios descubiertos, hay uno que llama especialmente la atención, así que nos conectamos a la siguiente URL.
 ```
-http://192.168.20.60:3000/support/logs
+http://192.168.20.80:3000/support/logs
 ```
 
 En el que podemos ver archivos muy interesantes.
@@ -142,7 +142,7 @@ Como siempre iniciamos ***ZAP***.
 
 Realiza con ZAP una exploración manual sobre la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 Si no estuvieras logado, inicia sesión con tu usuario en la aplicación.
 
@@ -187,16 +187,16 @@ Como siempre iniciamos ***ZAP***.
 
 Realiza con ZAP una exploración manual sobre la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 Si no estuvieras logado, inicia sesión con tu usuario en la aplicación.
 
-En el ***Ejercicio 1*** del laboratorio ***lab-25-F***, vimos que en la ruta ***http://192.168.20.60:3000/ftp*** había una serie de documentos interesantes. Para este ejercicio nos fijamos en uno llamado ***package.json.bak***. Este archivo parece ser un backup del archivo ***package.json***, que se usa para almacenar información importante sobre la aplicación. Por esta razón, si el actor de la amenaza es capaz de conseguirlo, podrá estudiar cómo está construida la aplicación y, en consecuencia, determinar otros vectores de ataque más efectivos.
+En el ***Ejercicio 1*** del laboratorio ***lab-25-F***, vimos que en la ruta ***http://192.168.20.80:3000/ftp*** había una serie de documentos interesantes. Para este ejercicio nos fijamos en uno llamado ***package.json.bak***. Este archivo parece ser un backup del archivo ***package.json***, que se usa para almacenar información importante sobre la aplicación. Por esta razón, si el actor de la amenaza es capaz de conseguirlo, podrá estudiar cómo está construida la aplicación y, en consecuencia, determinar otros vectores de ataque más efectivos.
 
 En consecuencia, intentemos descargar directamente el archivo. En la barra de dirección escribimos.
 ```
-http://192.168.20.60:3000/ftp/package.json.bak
+http://192.168.20.80:3000/ftp/package.json.bak
 ```
 
 La aplicación responde con un mensaje en que se puede ver claramente que solo los documentos ***pdf*** se pueden descargar.
@@ -207,7 +207,7 @@ Este mensaje se produce porque la aplicación determina la extensión del archiv
 
 La codificación URL del byte nulo es ***%2500***, así que intentamos descargar el archivo escribiendo la siguiente URL en la barra de direcciones.
 ```
-http://192.168.20.60:3000/ftp/package.json.bak%2500.md
+http://192.168.20.80:3000/ftp/package.json.bak%2500.md
 ```
 
 Se puede comprobar que por medio de está técnica podemos saltar la comprobación de extensión para los archivos que permite descargar el servidor.
