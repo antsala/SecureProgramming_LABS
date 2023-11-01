@@ -26,7 +26,7 @@ Las vulnerabilidades presentes en ***Juice Shop*** se organizan por diversas cat
 
 ![Categorías Vulnerabilides](../img/lab-25-A/202210031935.png)
 
-El objetivo de estos laboratorios no es demostrarlas todas, porque son ***101***, sino hacer una selección de las más importantes y peligrosas.
+El objetivo de estos laboratorios no es demostrarlas todas, porque son Ubu_srv_JUICE_SHOP***101***, sino hacer una selección de las más importantes y peligrosas.
 
 Para poder entender y descubrir las vulnerabilidades, necesitaremos usar las herramientas de desarrollo. Tengamos en cuenta que no todos los navegadores soportan todas las funcionalidades. En la siguiente tabla podemos ver un resumen. En ***Kali*** usaremos ***Firefox*** que las soporta todas.
 
@@ -41,7 +41,7 @@ Iniciamos sesión en ***Ubu_srv_JUICE_SHOP***, pero a través de ***SSH***.
 
 En la máquina ***Kali***, abrimos una terminal y escribimos el siguiente comando.
 ```
-ssh antonio@192.168.20.60
+ssh antonio@192.168.20.80
 ```
 
 Como password ponemos el siguiente.
@@ -102,7 +102,7 @@ El resultado debe ser similar a este.
 
 En la máquina ***Kali***, abrimos el navegador y nos conectamos a la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 La aplicación debe funcionar.
