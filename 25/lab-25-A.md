@@ -145,11 +145,9 @@ Esperamos a que termina la actualización. ***ZAP*** está iniciado.
 
 ZAP ofrece una nueva forma de interacción con el usuario, el llamado ***OWASP HUD***. Para activarlo procedemos de la siguiente forma. En el panel derecho, en la pestaña ***Quick Start***, hacemos clic en ***Manual Explore***.
 
-![Manual Explore](../img/lab-25-A/202311011215.png)
-
 A continuación, en el panel ***Manual Explorer*** escribimos la URL del sitio a explorar y, para activar la función de ***HUD***, marcamos el checkbox ***Enable HUD***. Elegimos como navegador a ***Firefox***. De esta forma, el navegador se configurará automáticamente para usar a ZAP como proxy. Hacemos clic en el botón ***Launch Browser***.
 
-![Enable HUD](../img/lab-25-A/202211222008.png)
+![Enable HUD](../img/lab-25-A/202311011215.png)
 
 ZAP HUD crea unas frames en los margenes izquierdo, derecho e inferior que permitirán interactuar con ZAP de forma muy cómoda conforme se estudia el sitio web. Aparecerá una pantalla recomendando hacer el tutorial. Es muy recomendable hacerlo. El tiempo estimado para ello es de 30 minutos.
 
