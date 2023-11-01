@@ -5,13 +5,13 @@
 Requisitos:
 1. Máquina ***Router-Ubu***.
 2. Máquina ***Kali Linux***.
-3. Máquina ***Ubu_srv_01***
+3. Máquina ***Ubu_srv__JUICE_SHOP***
 
 
 En la máquina ***Kali***, si no estamos conectados a la app, abrimos el navegador y conectamos a la siguiente URL.
 (Nota: Si fallara, revisar que el contenedor esté corriendo.)
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 En la página inicial, se muestran los diferentes zumos que ofrece la tienda. Si haces clic en el logo que aparece arriba a la izquierd, te llevará siempre al inicio de la página.
