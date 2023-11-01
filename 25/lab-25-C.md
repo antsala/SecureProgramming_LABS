@@ -5,7 +5,7 @@
 Requisitos:
 1. Máquina ***Router-Ubu***.
 2. Máquina ***Kali Linux***.
-3. Máquina ***Ubu_srv__JUICE_SHOP***
+3. Máquina ***Ubu_srv_JUICE_SHOP***
 
 ## Ejercicio 1: Descubrir el "Scoreboard".
 
@@ -91,3 +91,5 @@ Como resultado hemos encontrado la página oculta, a la que aún no tenemos acce
 ![Administration](../img/lab-25-C/202211212046.png)
 
 ***FIN DEL LABORATORIO***
+
+[Vamos al siguiente lab](../25/lab-25-D.md)
