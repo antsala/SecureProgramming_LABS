@@ -7,7 +7,7 @@ Requisitos:
 2. Máquina ***Kali Linux***.
 3. Máquina ***Ubu_srv_JUICE_SHOP***
 
-Las debilidades de inyección permiten a los actores de la amenaza enviar código malicioso a través de la aplicación para atacar un sistema de backend. Estos ataque incluyen:
+Las debilidades de inyección permiten a los actores de la amenaza enviar código malicioso a través de la aplicación para atacar un sistema de backend. Estos ataques incluyen:
 
 * Ejecutar comandos del sistema operativo por medio de llamadas al sistema (System calls)
 * Abrir otros programas por medio de comandos de la shell.
