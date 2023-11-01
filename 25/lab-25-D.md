@@ -14,13 +14,13 @@ Las debilidades de inyección permiten a los actores de la amenaza enviar códig
 * Relizar consultas a la base de datos de backend.
 * etc.
 
-Los ataques de inyección pueden presentarse cuando la aplicación utiliza alguna clase de interprete, que no filtra apropiadamente los datos enviados por el atacante.
+Los ataques de inyección pueden presentarse cuando la aplicación utiliza alguna clase de intérprete, que no filtra apropiadamente los datos enviados por el atacante.
 
 Los ataques de inyección SQL pueden ser muy sencillos de explotar, pero también los tenemos muy elaborados y complejos. Las consecuencias de poder interactuar con el servidor de bases de datos son diversas, pueden modificar la información, corromperla o eliminarla.
 
 ## Ejercicio 1. Hacer un pedido de la oferta especial de navidad de 2014.
 
-La ***Blind SQL Injection*** es un tipo de ataque donde preguntamos a la base de datos (a ciegas) por consultas que pueden devolver ***true*** o ***false***, y estudiamos la respuesta. Este tipo de ataque se utiliza cuando la aplicación web está configurada para mostrar ***mensajes de error genéricos***, pero es vulnerable a inyección de SQL.
+La ***Blind SQL Injection*** es un tipo de ataque donde preguntamos a la base de datos (a ciegas) mediante consultas que pueden devolver ***true*** o ***false***, y estudiamos la respuesta. Este tipo de ataque se utiliza cuando la aplicación web está configurada para mostrar ***mensajes de error genéricos***, pero es vulnerable a inyección de SQL.
 
 Cuando realizamos el ataque, la aplicación web puede mostrar errores  indicando que la sintaxis de la consulta es incorrecta.
 
@@ -42,9 +42,9 @@ Usaremos ***ZAP***, así que lo abrimos y conectamos a la siguiente URL.
 http://192.168.20.80:3000/search
 ```
 
-Vamos a estudiar una URL muy concreta. Para facilitar su localización, en el HUD, hacemos clic en ***History***, y filtramos por.
+Busca información sobre el producto **King***  usando la sección de búsqueda de la aplicación. Cuando lo encontremos, en el HUD, hacemos clic en ***History***, y filtramos por.
 ```
-search
+products
 ```
 
 ![Filtro](../img/lab-25-D/202211222021.png)
