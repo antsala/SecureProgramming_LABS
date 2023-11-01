@@ -148,3 +148,5 @@ cd $HOME
 
 git clone https://github.com/antsala/SecureProgramming_LABS.git
 ```
+
+[Vamos al siguiente lab](../25/lab-25-A.md)

@@ -155,3 +155,5 @@ ZAP HUD crea unas frames en los margenes izquierdo, derecho e inferior que permi
 
 
 ***FIN DEL LABORATORIO***
+
+[Vamos al siguiente lab](../25/lab-25-B.md)
