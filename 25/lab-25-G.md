@@ -43,9 +43,9 @@ http://192.168.20.80:3000/#/administration
 ![403](../img/lab-25-G/202212051116.png)
 
 
-A continuación, accede a ZAP y localiza en el historial, la request que registró al usuario. Esta request es de tipo ***POST***.
+A continuación, accede a ZAP y localiza en el historial, la request que registró al usuario. Esta request es de tipo ***POST***. (Filtrar por POST)
 
-![Request POST](../img/lab-25-G/202212051050.png)
+![Request POST](../img/lab-25-G/202311031917.png)
 
 En la Request puedes observar los campos que se envían al servidor para crear al nuevo usuario.
 
