@@ -5,7 +5,7 @@
 Requisitos:
 1. Máquina ***Router-Ubu***.
 2. Máquina ***Kali Linux***.
-3. Máquina ***Ubu_srv_01***
+3. Máquina ***Ubu_srv_JUICE_SHOP***
 
 La pricipal amenaza a la que se ve sometida una aplicación web es la ausencia o un control incorrecto del texto que puede introducir un atacante en un campo de formulario o parámetro en general. Es conocido por todos que si usas un buen framework de desarrollo, éste debería proteger tu aplicación frente a este tipo de debilidades.
 
@@ -65,7 +65,7 @@ Hacemos clic en el botón ***Send***.
 
 En la respuesta podrás ver que la API ha aceptado la creación del usuario de esta forma tan simple.
 
-![Otra Response](../img/lab-25-G/202212051102.png)
+![Otra Response](../img/lab-25-G/202311031927.png)
 
 Observa como la response es aceptada ***success***. Mira también los valores para los campos ***email*** (otraprueba@gmail.com) y ***role*** (admin). El password es el que pusiste.
 
