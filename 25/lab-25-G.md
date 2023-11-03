@@ -49,7 +49,7 @@ A continuación, accede a ZAP y localiza en el historial, la request que registr
 
 En la Request puedes observar los campos que se envían al servidor para crear al nuevo usuario.
 
-![Request](../img/lab-25-G/202212051051.png)
+![Request](../img/lab-25-G/202311031927.png)
 
 Y la response indica que el ***role*** del usuario es ***customer***.
 
@@ -65,7 +65,7 @@ Hacemos clic en el botón ***Send***.
 
 En la respuesta podrás ver que la API ha aceptado la creación del usuario de esta forma tan simple.
 
-![Otra Response](../img/lab-25-G/202311031937.png)
+![Otra Response](../img/lab-25-G/202311031942.png)
 
 Observa como la response es aceptada ***success***. Mira también los valores para los campos ***email*** (otraprueba@gmail.com) y ***role*** (admin). El password es el que pusiste.
 
