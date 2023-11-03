@@ -65,7 +65,7 @@ Hacemos clic en el botón ***Send***.
 
 En la respuesta podrás ver que la API ha aceptado la creación del usuario de esta forma tan simple.
 
-![Otra Response](../img/lab-25-G/202311031927.png)
+![Otra Response](../img/lab-25-G/202311031937.png)
 
 Observa como la response es aceptada ***success***. Mira también los valores para los campos ***email*** (otraprueba@gmail.com) y ***role*** (admin). El password es el que pusiste.
 
