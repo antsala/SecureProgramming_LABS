@@ -55,7 +55,7 @@ Y la response indica que el ***role*** del usuario es ***customer***.
 
 ![Response](../img/lab-25-G/202212051053.png)
 
-Hacemos clic derechos en la request anterior y elegimos ***Open/Resend with Request Editor*** para editarla.
+Hacemos clic derecho en la request anterior y elegimos ***Open/Resend with Request Editor*** para editarla.
 
 Modifica los parámetros hasta que tengan la siguiente forma.
 
@@ -69,9 +69,9 @@ En la respuesta podrás ver que la API ha aceptado la creación del usuario de e
 
 Observa como la response es aceptada ***success***. Mira también los valores para los campos ***email*** (otraprueba@gmail.com) y ***role*** (admin). El password es el que pusiste.
 
-Cierra la sesión con el usuario actual einicia sesión con el nuevo usuario. A continuación escribe en la barra de direcciones la siguiente URL.
+Cierra la sesión con el usuario actual e inicia sesión con el nuevo usuario. A continuación escribe en la barra de direcciones la siguiente URL.
 ```
-http://192.168.20.60:3000/#/administration
+http://192.168.20.80:3000/#/administration
 ```
 
 Podrás comprobar que puedes acceder a la sección de administración de la aplicación.
@@ -94,7 +94,7 @@ Como siempre iniciamos ***ZAP***.
 
 Realiza con ZAP una exploración manual sobre la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 Inicia sesión con tu usuario de la aplicación y haz un pedido de una unidad de zumo de limón. Podrás comprobar que es posible cambiar la cantidad, pero que esta no puede ser negativa. 
