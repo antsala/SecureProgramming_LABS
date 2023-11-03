@@ -24,20 +24,20 @@ Como siempre iniciamos ***ZAP***.
 
 Realiza con ZAP una exploración manual sobre la siguiente URL.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000
 ```
 
 A continuación registra un nuevo usuario, tal y como se muestra en la imagen.
 (Nota: observa la URL en la que se crea el usuario)
 
-![Register](../img/lab-25-G/202212051046.png)
+![Register](../img/lab-25-G/202311031911.png)
 
 Pulsa el botón para crear el usuario.
 
 Intenta entrar en la sección ***Administration***, escribiendo la siguiente URL en la barra de direcciones.
 (Nota: Esta sección se descubrió en el ***Ejercicio 2*** del laboratorio ***lab-25-C***)
 ```
-http://192.168.20.60:3000/#/administration
+http://192.168.20.80:3000/#/administration
 ```
 
 ![403](../img/lab-25-G/202212051116.png)

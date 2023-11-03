@@ -152,7 +152,7 @@ Lo primero que debemos hacer es localizar el endpoint vulnerable y, para ello, d
 
 Tras un rato, nos fijamos en un endpoint curioso, concretamente ***/rest/user/whoami***, cuya request ha sido capturada por la araña.
 
-![AJAX Spider](../img/lab-25-F/202211301814.png)
+![AJAX Spider](../img/lab-25-F/202311011426.png)
 
 Paramos la araña y, elegimos ***History***. En el historial localizamos las request a ***/rest/user/whoami***. Para cada una de ellas, hacemos clic derecho y, en el menú contextual, elegimos la opción ***Open/Resend with Request Editor...***. Debemos localizar una request que contenga el token de autorización.
 
@@ -216,3 +216,5 @@ Se puede comprobar que por medio de está técnica podemos saltar la comprobaci�
 
 
 ***FIN DEL LABORATORIO***
+
+[Vamos al siguiente lab](../25/lab-25-G.md)
