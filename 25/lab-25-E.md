@@ -258,9 +258,25 @@ Hacemos logout de nuestro usuario actual. A continuación escribimos esta URL en
 http://192.168.20.80:3000/#/forgot-password 
 ```
 
-Observa, en la siguiente imagen, que cuando pones el nombre del usuario, la aplicación selecciona automáticamente la pregunta de seguridad. En este ejemplo, Bjoern eligió poner el nombre de su mascota.
+Observa, en la siguiente imagen, que cuando pones el nombre del usuario, la aplicación selecciona automáticamente la pregunta de seguridad. En este ejemplo, Bjoern eligió poner el nombre de su mascota favorita.
 
 ![mascota](../img/lab-25-E/202311041230.png)
+
+Ahora solo queda hacer algo de OSINT, es decir, acceder a las redes sociales del usuario buscando una mascota y, si somos afortunados, aparecerá el nombre.
+
+Para ello puedes hacer uso de herramientas que automatizan la localización de información sobre la víctima, como puedes ver en este enlace: https://github.com/jivoi/awesome-osint
+
+Usando estas herramientas, descubrirás que la víctima tiene perfil en Twitter. Usa el navegador y conecta a
+```
+https://twitter.com/bkimminich
+```
+
+Es cuestión de leer las publicaciones y, con suerte encontrarás algo, por ejemplo, una imagen de un gato que puedes ver en el rectángulo de color rojo.
+
+![Zaya](../img/lab-25-E/202311041236.png)
+
+
+
 
 ***FIN DEL LABORATORIO***
 
