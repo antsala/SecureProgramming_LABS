@@ -105,7 +105,7 @@ Cambia la cantidad de producto a ***5 unidades***.
 
 Localiza la request que actualiza la cantidad de producto a ***5 unidades***. 
 
-![Request 5 unidades](../img/lab-25-G/202212052012.png)
+![Request 5 unidades](../img/lab-25-G/202311041123.png)
 
 Haz clic en ella con botón derecho y ejecuta ***Open/Resend with Request Editor***. Edita el parámetro ***quantity*** y pon una cantidad negativa, por ejemplo ***-100***.
 
