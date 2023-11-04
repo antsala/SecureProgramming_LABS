@@ -36,7 +36,4 @@ A continuación registra un nuevo usuario, tal y como se muestra en la imagen.
 
 ***FIN DEL LABORATORIO***
 
-https://pwning.owasp-juice.shop/part2/sensitive-data-exposure.html
-
-https://pwning.owasp-juice.shop/appendix/solutions.html
 
