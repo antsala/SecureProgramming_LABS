@@ -258,7 +258,9 @@ Hacemos logout de nuestro usuario actual. A continuación escribimos esta URL en
 http://192.168.20.80:3000/#/forgot-password 
 ```
 
+Observa, en la siguiente imagen, que cuando pones el nombre del usuario, la aplicación selecciona automáticamente la pregunta de seguridad. En este ejemplo, Bjoern eligió poner el nombre de su mascota.
 
+![mascota](../img/lab-25-E/202311041230.png)
 
 ***FIN DEL LABORATORIO***
 
