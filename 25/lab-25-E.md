@@ -275,6 +275,12 @@ Es cuestión de leer las publicaciones y, con suerte encontrarás algo, por ejem
 
 ![Zaya](../img/lab-25-E/202311041236.png)
 
+Si haces clic en la imagen, aparecerá la publicación, es la que se intuye el nombre de la mascota (Zaya)
+
+![Nombre Zaya](../img/lab-25-E/202311041240.png)
+
+
+
 
 
 
