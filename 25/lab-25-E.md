@@ -279,6 +279,21 @@ Si haces clic en la imagen, aparecerá la publicación, es la que se intuye el n
 
 ![Nombre Zaya](../img/lab-25-E/202311041240.png)
 
+Solo queda escribir en el diálogo de recuperación de contraseña el nombre de la mascota.
+```
+Zaya
+```
+
+y poner una nueva contraseña, por ejemplo
+```
+Pa55w.rd
+```
+
+Acabamos de robar la cuenta de Bjoern en la aplicación. 
+
+Recuerda que en este caso no existe una mala práctica de programación en concreto, sino que la vulnerabilidad se debe a un mecanismo de recuperación de contraseña débil que puede ser fácilmente explotado si se conoce información personal de la víctima.
+
+
 
 
 
