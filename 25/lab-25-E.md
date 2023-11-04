@@ -244,6 +244,7 @@ Como ya vimos en la parte teórica, la exposición en redes sociales puede ser e
 * Descubre una forma sencilla de obtener los nombres de usuario de los clientes de la aplicación.
 * Accede a la función de recuperación de contraseña de la aplicación y verifica la pregunta de seguridad que tiene configurada 'Bjoern'
 * Localiza información sobre una mascota en las redes sociales de 'Bjoern'.
+* No es necesario usar ZAP para esta práctica.
 
 
 ***RESOLUCIÓN***. Los pasos para resolver el reto son.
@@ -254,7 +255,7 @@ La aplicación muestra en la reseña el nombre del usuario que la creó. De esta
 
 Hacemos logout de nuestro usuario actual. A continuación escribimos esta URL en la barra de direcciones, que permite reseteal el password.
 ```
-https://192.168.20.80:3000/#/forgot-password 
+http://192.168.20.80:3000/#/forgot-password 
 ```
 
 
