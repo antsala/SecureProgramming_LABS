@@ -231,6 +231,34 @@ Por último, escribimos dicho código en el formulario de la aplicación y ya es
 
 ![login](../img/lab-25-E/202211262112.png)
 
+
+## Ejercicio 3: Resetear el password del usuario Bjoern a través del mecanismo de contraseña olvidada.
+
+
+Como ya vimos en la parte teórica, la exposición en redes sociales puede ser el talón de Aquiles de la seguridad del inicio de sesión de un usuario. 
+
+***OBJETIVO***: Cambiar la contraseña del usuario 'bjoern@owasp.org' de la aplicación.
+
+***PISTAS***: 
+
+* Descubre una forma sencilla de obtener los nombres de usuario de los clientes de la aplicación.
+* Accede a la función de recuperación de contraseña de la aplicación y verifica la pregunta de seguridad que tiene configurada 'Bjoern'
+* Localiza información sobre una mascota en las redes sociales de 'Bjoern'.
+
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Para obtener el nombre de inicio de sesión del usuario podemos hacer un ataque previo de inyección de SQL y obtener los registros de la tabla de usuarios. También existe una forma más simple que consiste en leer las reseñas que algunos clientes han realizado sobre los productos.
+
+La aplicación muestra en la reseña el nombre del usuario que la creó. De esta forma, es simple acceder al nombre de usuario de la potencial víctima. Para el resto de la práctica, este nombre de usuario es 'bjoern@owasp.org'.
+
+Hacemos logout de nuestro usuario actual. A continuación escribimos esta URL en la barra de direcciones, que permite reseteal el password.
+```
+https://192.168.20.80:3000/#/forgot-password 
+```
+
+
+
 ***FIN DEL LABORATORIO***
 
 [Vamos al siguiente lab](../25/lab-25-F.md)

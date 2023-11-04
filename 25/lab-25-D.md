@@ -1,4 +1,4 @@
-# Ataques de Inyección SQL (SQL Injection).
+# Ataques de Inyección.
       
       
 

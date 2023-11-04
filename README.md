@@ -26,16 +26,18 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Descubrir el "Scoreboard"
    - Descubrir la sección "Admin"
 
-4. Laboratorio 25-D: Ataques de Inyección SQL (***SQL Injection***).
+4. Laboratorio 25-D: Ataques de Inyección.
    - Hacer un pedido de la oferta especial de navidad de 2014.
    - Exfiltrar el esquema de la base de datos.
    - Obtener las credenciales de todos los usuarios.
    - Iniciar sesión con el usuario administrador.
    - Iniciar sesión con un usuario que ni siquiera existe.
 
+
 5. Laboratorio 25-E: Romper la autenticación (***Broken Authentication***).
    - Cambiar el password del usuario ***Bender*** sin usar ni inyección de SQL ni la opción ***Contraseña olvidada***.
    - Romper la autenticación 2FA.
+   - Resetear el password del usuario Bjoern a través del mecanismo de contraseña olvidada.
 
 6. Laboratorio 25-F: Exposición de datos sensibles (***Sensitive Data Exposure***).
    - Acceder a un documento confidencial.
