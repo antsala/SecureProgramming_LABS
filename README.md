@@ -38,6 +38,7 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Cambiar el password del usuario ***Bender*** sin usar ni inyección de SQL ni la opción ***Contraseña olvidada***.
    - Romper la autenticación 2FA.
    - Resetear el password del usuario Bjoern a través del mecanismo de contraseña olvidada.
+   - Iniciar sesión con la cuenta de Gmail de Bjoern.
 
 6. Laboratorio 25-F: Exposición de datos sensibles (***Sensitive Data Exposure***).
    - Acceder a un documento confidencial.
