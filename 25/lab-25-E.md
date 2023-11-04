@@ -333,10 +333,10 @@ La debilidad se encuentra en la creación de la contraseña. Estudia el código 
 
 El programador decició emplear un algoritmo simple (y vulnerable) para generar el password del usuario en la autenticación de Google. 
 ```
-l.email.split('').reverse().join('')
+o.email.split('').reverse().join('')
 ```
 
-Tiene como invertir los caracteres que forman la dirección de correo electrónico de la víctima 
+Tiene como objetivo invertir los caracteres que forman la dirección de correo electrónico de la víctima.
 
 De esta forma, para el correo electrónico de la víctima, que es
 ```
@@ -360,30 +360,14 @@ El resultado es
 bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamIK
 ```
 
-En el código que puedes ver en la imagen, se guarda la credencial y posteriormente se inicia sesión en Google proporcionando la contraseña codificada en Base64.
+En el código que puedes ver en la imagen, se guarda la contraseña codificada en base64 y posteriormente se inicia sesión en Google enviándola.
 
 ![GoogleLogin](../img/lab-25-E/202311041348.png)
 
-Vuelve a la página de login.
-```
-http://192.168.20.80:3000/#/login
-```
 
-Como usuario pon
-```
-bjoern.kimminich@gmail.com
-```
-
-Y como password, la codificación eb Base64 anterior
-```
-bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamIK
-```
-
-Podrás comprobar que te has logado correctamente. 
+Como decíamos al inicio, puesto que la aplicación no tiene realmente configurada el OAuth con Google, no aparece el botón de iniciar sesión con Google y por consiguiente no puedes probar. Ojo, que no vale con poner estas credenciales en la página de login de la aplicación.
 
 Ten en cuenta que esta vulnerabilidad en la aplicación se debe a una implementación débil (deficiente) en el código JavaScript de la aplicación. En ningún caso es debida a una mala implementación de OAuth por parte de Google.
-
-
 
 
 
