@@ -295,6 +295,42 @@ Recuerda que en este caso no existe una mala práctica de programación en concr
 
 
 
+## Ejercicio 3: Iniciar sesión con la cuenta de Gmail de Bjoern.
+
+
+La autorización moderna permite que tu aplicación delegue en un proveedor de identidades como Google dicha responsabilidad. El objetivo de este laboratorio no es explicar cómo debes programar tu aplicación para que pueda beneficiarse del protocolo OAuth, sino demostrar cómo una deficiente implementación de este estándar en la aplicación, puede conducir a problemas de seguridad.
+
+***OBJETIVO***: Inicia sesión con la cuenta de Gmail de un usuario usando que ha configurado la autenticación con Google.
+
+***PISTAS***: 
+
+* Localiza en el archivo 'main.js' cómo se implementa la autorización del protocolo OAuth en la aplicación.
+* Determina si hay alguna debilidad en el código de JavaScript.
+* Usa las herramientas del desarrollador.
+* No es necesario usar ZAP para esta práctica.
+
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Nota importante: Si no ves el botón 'Iniciar sesión con Google' es porque el contenedor de Docker no ha configurado convenientemente la autenticación con Google. No obstante, el reto es plenamente funcional, porque se trata de que descubras el código Javascript que presenta la debilidad. 
+
+Inicia sesión con tu usuario en la aplicación.
+```
+http://192.168.20.80:3000/#/login
+```
+
+Habilita las herramientas del desarrollador en Firefox ***CTRL+Mayús+i***.
+
+Localiza la llamnada al método Javascript "userService.oauthLogin", tal y como puedes ver en la imagen.
+
+![oauthlogin](../img/lab-25-E/202311041326.png)
+
+Esta es la parte que debe desarrollar el programador para integrar su aplicación con el OAuth de Google.
+
+La debilidad se encuentra en la creación de la contraseña. Estudia el código marcado en la imagen.
+
+![btoa](../img/lab-25-E/202311041330.png)
+
 
 
 
