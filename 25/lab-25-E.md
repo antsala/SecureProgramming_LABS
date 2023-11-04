@@ -331,6 +331,58 @@ La debilidad se encuentra en la creación de la contraseña. Estudia el código 
 
 ![btoa](../img/lab-25-E/202311041330.png)
 
+El programador decició emplear un algoritmo simple (y vulnerable) para generar el password del usuario en la autenticación de Google. 
+```
+l.email.split('').reverse().join('')
+```
+
+Tiene como invertir los caracteres que forman la dirección de correo electrónico de la víctima 
+
+De esta forma, para el correo electrónico de la víctima, que es
+```
+bjoern.kimminich@gmail.com
+```
+
+Se obtiene
+```
+moc.liamg@hcinimmik.nreojb
+```
+
+A continuación se llama a la función ***btoa***, que codifica en Base-64 la cadena anterior.
+
+Para obtener dicha información, en una terminal de Kali, escribimos lo siguiente.
+```
+echo moc.liamg@hcinimmik.nreojb | base64
+```
+
+El resultado es
+```
+bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamIK
+```
+
+En el código que puedes ver en la imagen, se guarda la credencial y posteriormente se inicia sesión en Google proporcionando la contraseña codificada en Base64.
+
+![GoogleLogin](../img/lab-25-E/202311041348.png)
+
+Vuelve a la página de login.
+```
+http://192.168.20.80:3000/#/login
+```
+
+Como usuario pon
+```
+bjoern.kimminich@gmail.com
+```
+
+Y como password, la codificación eb Base64 anterior
+```
+bW9jLmxpYW1nQGhjaW5pbW1pay5ucmVvamIK
+```
+
+Podrás comprobar que te has logado correctamente. 
+
+Ten en cuenta que esta vulnerabilidad en la aplicación se debe a una implementación débil (deficiente) en el código JavaScript de la aplicación. En ningún caso es debida a una mala implementación de OAuth por parte de Google.
+
 
 
 
