@@ -644,6 +644,7 @@ Haz clic en el botón ***Change***. Habrás robado la identidad de Bender en la 
 
 ![Hackeada](../img/lab-25-E/202311081915.png)
 
+Nota: A partir de ahora ten en cuenta que proxy de ataque usas. Firefox está configurado para usar como proxy Burp. Si quieres volver a usar ZAP, es conveniente que quites el proxy de la configuración de Firefox.
 
 ***FIN DEL LABORATORIO***
 
