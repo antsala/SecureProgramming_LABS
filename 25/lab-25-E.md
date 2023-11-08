@@ -592,38 +592,57 @@ Abre el archivo con el diccionario y estúdialo.
 nano diccionario.txt
 ```
 
-Cierra el archivo sin modificar. En un ataque real, este diccionario se puede generar con herramientas especialicadas como ***crunch*** y otras herramientas.
+Cierra el archivo sin modificar. En un ataque real, este diccionario se puede generar con herramientas especializadas como ***crunch*** u otras.
 
-Vuelve a Burp e importa el diccionario.
+Vuelve a Burp e importa el diccionario. En ***Intruder*** selecciona ***Payloads***. Haz clic en el botón ***Load*** para cargar el archivo de diccionario.
 
-
-
-
-
-Es el momento de atacar. Para ello hacemos clic en el botón ***Start attack***.
-
-![Start Attack](../img/lab-25-E/202311081704.png)
+![diccionario](../img/lab-25-E/202311081902.png)
 
 
+Es el momento de atacar. Para ello hacemos clic en el botón ***Start attack***. 
 
+![Start Attack](../img/lab-25-E/202311081906.png)
 
- 
+La versión de comunidad contiene una versión de demostración del intruder, es decir, está limitada. No permite incluir diccionarios muy largos y el rendimiento está también limitado. En cualquier caso es más que suficiente para demostrar la técnica.
 
+![Limitación](../img/lab-25-E/202311081908.png)
 
+Observa la salida de Intruder. En especial la columna Status. El código ***401*** es Unauthorized, que significa que el servidor no aceptó la request. Esto es debido a que la respuesta a la pregunta de seguridad es incorrecta. El error ***200*** es OK, es decir, el hack habría funcionado. Observa en la imagen la línea 5.
 
+![Resultado](../img/lab-25-E/202311081912.png)
 
+Es decir, la respuesta ***Stop'n'Drop*** es la correcta para poder resetear el password.
 
+Desactiva la interceptación en Burp, y conéctate de nuevo a la URL de reseteo de contraseña.
+```
+http://192.168.20.80:3000/#/forgot-password
+```
 
+En el formulario de contraseña olvidada (Forgot Password) introduce la siguiente información.
 
+En ***Email***
+```
+bender@juice-sh.op
+```
 
+En ***Security Question*** escribe (Nota: Esta no es la respuesta correcta, pero algo hay que poner)
+```
+Stop'n'Drop
+```
 
+En ***New Password***
+```
+Pa55w.rd
+```
 
+Y en ***Repeat New Password***
+```
+Pa55w.rd
+```
 
+Haz clic en el botón ***Change***. Habrás robado la identidad de Bender en la aplicación.
 
-
-
-https://curiositykillscolby.com/2020/12/09/pwning-owasps-juice-shop-pt-44-reset-benders-password/
-
+![Hackeada](../img/lab-25-E/202311081915.png)
 
 
 ***FIN DEL LABORATORIO***
