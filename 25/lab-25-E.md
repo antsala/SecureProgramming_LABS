@@ -470,6 +470,27 @@ En Burp, dirígete de nuevo a ***Proxy*** y a ***Options***. Haz clic en el bot�
 
 ![Importar certificado](../img/lab-25-E/202311081451.png)
 
+Vamos a exportar el certificado de la Autoridad Certificadora de Burp. Para ello haz clic en el botón ***Certificate in DER format***, en la sección ***Export***.
+
+![Exportar certificado](../img/lab-25-E/202311081539.png)
+
+Guárdalo en un archivo.
+
+![Archivo](../img/lab-25-E/202311081541.png)
+
+Finaliza el asistente de exportación.
+
+En ***Firefox***, vuelve a las opciones y usa el buscador para encontrar los certificados. Haz clic en el botón ***View Certificates***.
+
+![View Certificates](../img/lab-25-E/202311081544.png)
+
+Asegúrate que está seleccionado el almacén de ***Autoridades Certificadoras*** (Authorities) y haz clic en el botón ***Import***.
+
+![Import](../img/lab-25-E/202311081545.png)
+
+
+
+
 
 
 
