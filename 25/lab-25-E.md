@@ -370,6 +370,120 @@ Como decíamos al inicio, puesto que la aplicación no tiene realmente configura
 Ten en cuenta que esta vulnerabilidad en la aplicación se debe a una implementación débil (deficiente) en el código JavaScript de la aplicación. En ningún caso es debida a una mala implementación de OAuth por parte de Google.
 
 
+## Ejercicio 4: Resetear la contraseña del usuario ***Bender*** por medio del mecanismo de contraseña olvidada.
+
+Este es otro ejemplo de como un ataque OSINT puede robar la credencial de un usuario de la aplicación. Volvemos a demostrar que ofrecer un método de recuperar la contraseña basado en preguntas de seguridad es la peor idea que podemos tener como desarrolladores.
+
+***OBJETIVO***: Roba la identidad del usuario Bender en la aplicación.
+
+***PISTAS***: 
+
+* El nombre de usuario de la víctima puedes obtenerlo leyendo las reseñas de los productos. Para agilizar la práctica, ese nombre de usuario es 'bender@juice-sh.op'.
+* Ataca a través del procedimiento de recordar la contraseña olvidada.
+* No hace falta usar ZAP.
+* Investiga en Internet sobre el personaje Bender.
+
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Accede a la página de login de la aplicación. 
+
+A continuación escribe el nombre de usuario de la víctima.
+```
+bender@juice-sh.op
+```
+
+y haz clic en el enlace  ***Forgot your Password?***. Podrás comprobar que el usuario eligió como pregunta de seguridad el nombre de la empresa en la que trabajó por primera vez.
+
+En consecuencia, el actor de la amenaza, realizará una búsqueda OSINT para intentar encontrar esa respuesta.
+
+Si vas bien encaminado, Bender trabajó por primera vez en una empresa llamada ***Stop 'n' Drop***. Puede ser una buena pista, así que, escribe como respuesta a la pregunta de seguridad lo siguiente:
+```
+Stop 'n' Drop
+```
+
+Es un buen intento, pero no funciona.
+![error](../img/lab-25-E/202311081343.png)
+
+El actor de la amenaza puede estar seguro que la respuesta a la pregunta de seguridad tiene que ver con ***Stop 'n' Drop***, pero la víctima puede que lo haya escrito de una manera ligeramente diferente.
+
+Para conseguir su objetivo, plantea usar una herramienta que permita hacer, de forma automática, un ataque de fuerza bruta al mecanismo de recuperación de contraseña usando modificaciones y permutaciones de la frase ***Stop 'n' Drop***. Decide usar la herramienta **Sniper*** de otra solución muy conocida en ciberseguridad. Burp Suite.
+
+Burp se caracteriza por siguiente:
+
+* Ser una potente herramienta de prueba de penetración y evaluación de seguridad diseñada para ayudar a los profesionales de seguridad a identificar y mitigar vulnerabilidades en aplicaciones web. 
+
+* Es desarrollada por PortSwigger, y es una solución de pago. No obstante, con la versión de comunidad es posible hacer muchas cosas.
+
+* Está formada por varias herramientas interconectadas que ofrecen una amplia gama de capacidades. El componente principal es el "Proxy", que actúa como un intermediario entre el navegador y la aplicación web objetivo. Esto permite a los usuarios interceptar y modificar las solicitudes y respuestas HTTP, lo que facilita la identificación de vulnerabilidades como inyecciones SQL, cross-site scripting (XSS) y otros ataques comunes. Es decir, más o menos lo mismo que hace ZAP, pero te ofrece un nivel de automatización más alto.
+
+* Al igual de ZAP, también ofrece un "Scanner", que automatiza la búsqueda de vulnerabilidades en una aplicación web. Los resultados se presentan en un informe detallado que ayuda a los profesionales de seguridad a priorizar y abordar las vulnerabilidades. Si quieres tener la totalidad de estos informes, necesitarás la versión comercial de pago.
+
+* El "Spider" de Burp Suite es una herramienta que permite rastrear automáticamente una aplicación web para descubrir todas las páginas y funcionalidades disponibles. Esto es útil para asegurarse de que ninguna parte de la aplicación quede sin analizar y para comprender la estructura general de la aplicación.
+
+* Incluir las herramientas de "Repeater" y "Intruder" que permiten a los usuarios realizar pruebas manuales y ataques automatizados de fuerza bruta o fuzzing, respectivamente. Estas herramientas son esenciales para evaluar la resistencia de una aplicación a ataques.
+
+* "Sequencer" es otra característica destacada de Burp Suite, que se utiliza para analizar la aleatoriedad y la calidad de los tokens de sesión generados por una aplicación. Esto es crucial para detectar debilidades en la generación de tokens de seguridad y evitar ataques de predicción.
+
+BurpSuite viene instalada en Kali, así que procedemos a iniciarla. En una terminal en la máquina Kali Linux, escribimos.
+
+En una terminal, escribimos:
+```
+burpsuite
+```
+
+Aceptamos los términos de uso.
+
+![Términos](../img/lab-25-E/202311081427.png)
+
+La versión de comunidad no permite guardar los proyectos, así que hacemos clic en el botón ***Next***.
+
+![Next](../img/lab-25-E/202311081429.png)
+
+Aceptamos la configuración por defecto (vamos a cambiarla a continuación) haciendo clic en el botón ***Start Burp***
+
+![Start](../img/lab-25-E/202311081431.png)
+
+Es el momento de observar cómo ha definido Burp su proxy. Para ello hacemos clic en ***Proxy*** y luego en ***Options***. Podrás ver que el proxy está en ***127.0.0.1*** y que su puerto es el ***8080***.
+
+![Proxy](../img/lab-25-E/202311081433.png)
+
+También necesitarás que el navegador de Kali pase por el proxy Burp. Abre ***Firefox***, haz clic en el menú y elige ***Settings***. 
+
+![Settings](../img/lab-25-E/202311081440.png)
+
+En los settings, usa el buscador para localizar los ajustes del proxy. Haz clic en el botón ***Settings***.
+
+![Settings](../img/lab-25-E/202311081442.png)
+
+Asegúrate que la configuración queda como indica la siguiente imagen.
+
+![Settings](../img/lab-25-E/202311081445.png)
+
+Haz clic en ***Ok*** y sal de la configuración de ***Firefox***.
+
+Ahora necesitamos instalar la Autoridad Certificadora de Burp. Esto permitirá el uso de HTTPS desde el navegador. 
+
+De forma predeterminada, cuando navegas por un sitio web HTTPS a través de Burp, el proxy genera un certificado TLS para cada host, firmado por su propio certificado de autoridad de certificación (CA). Este certificado de CA se genera la primera vez que se ejecuta Burp y se almacena localmente. Para utilizar Burp Proxy de forma más eficaz con los sitios web HTTPS, deberás instalar el certificado de CA de Burp como raíz de confianza en su navegador.
+
+En Burp, dirígete de nuevo a ***Proxy*** y a ***Options***. Haz clic en el botón ***Import/Export CA Certificate***
+
+![Importar certificado](../img/lab-25-E/202311081451.png)
+
+
+
+
+
+
+
+
+
+
+
+https://rajendrakv.wordpress.com/2020/06/14/brute-force-using-burp-suite-and-owasp-zap/
+https://curiositykillscolby.com/2020/12/09/pwning-owasps-juice-shop-pt-44-reset-benders-password/
+
+
 
 ***FIN DEL LABORATORIO***
 
