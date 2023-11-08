@@ -488,6 +488,126 @@ Asegúrate que está seleccionado el almacén de ***Autoridades Certificadoras**
 
 ![Import](../img/lab-25-E/202311081545.png)
 
+Localiza el archivo que exportaste. Es posible que tengas que cambiar el filtro para que se vean todos los archivos. Impórtalo, marca las casillas de verificación y haz clic en el botón ***OK***.
+
+![Import 2](../img/lab-25-E/202311081615.png)
+
+Haz clic en ***OK*** para salir del administrador de certificados.
+
+Vamos a proceder a realizar un ataque de fuerza bruta con Burp sobre el servicio de recuperación de contraseñas.
+
+Recuerda que nos habíamos quedado en que la contraseña es probable que esté relacionada con la frase ***Stop 'n' Drop***, pero la víctima podría haberla modificado ligeramente.
+
+Para proceder al ataque es necesario que capturemos una request asociada con el servicio de reseteo de password. Para ello, desactivamos momentáneamente la captura de paquetes (MitM) de Burp.
+
+En Burp, asegúrate que ***Proxy***/***Intercept*** está desactivada. Lo consegirás haciendo clic en el botón ***Intercept is On***, hasta que aparezca que está desactivado.
+
+![Intercept](../img/lab-25-E/202311081627.png)
+
+Podrás navegar por la aplicación sin que Burp intercepte nada. Pruébalo.
+
+Ahora, desde el navegador, conecta con la URL de recuperación de password.
+```
+http://192.168.20.80:3000/#/forgot-password
+```
+
+En el formulario de contraseña olvidada (Forgot Password) introduce la siguiente información.
+
+En ***Email***
+```
+bender@juice-sh.op
+```
+
+En ***Security Question*** escribe (Nota: Esta no es la respuesta correcta, pero algo hay que poner)
+```
+Stop 'n' Drop
+```
+
+En ***New Password***
+```
+Pa55w.rd
+```
+
+Y en ***Repeat New Password***
+```
+Pa55w.rd
+```
+
+Atención ahora. NO hagas clic en el botón ***Change***. Antes hay que activar la interceptación de Burp.
+
+En Burp, asegúrate que la interceptación está habilitada.
+
+![Intercept On](../img/lab-25-E/202311081630.png)
+
+
+Vuelve al navegador y haz clic en el botón ***Change***. Aparentemente nada ocurre, pero eso debe ser así porque Burp está interceptando en tráfico. 
+
+Vuelve a Burp y ve haciendo clic en el botón ***Forward*** para ir dejando pasar las request hacia el servidor, hasta que encuentres una como se indica en la imagen. Es la request que intenta resetear el password.
+
+![Request](../img/lab-25-E/202311081643.png)
+
+No funcionará, como bien sabes, porque la respuesta a la pregunta de seguridad no es la correcta (aunque intuimos que por ahí van los tiros).
+
+Con la request aún seleccionada, haz clic en el botón ***Action*** y a continuación elige en el menú ***Send to Intruder***. 
+
+![Send to Intruder](../img/lab-25-E/202311081643.png)
+
+***Intruder*** es una poderosa herramienta que va a permitirnos hacer ataques de fuerza bruta (entre otros) reenviando la request capturada.
+
+En Burp, selecciona en el menú ***Intruder*** y luego ***Positions***
+
+![Positions](../img/lab-25-E/202311081652.png)
+
+El ataque de fuerza bruta consiste en ir sustituyendo los parámetros de la request. Estos parámetros se indican mediante 'placeholders' que usan el carácter '§' como inicio y final del marcador. Observa en la siguiente imagen los mencionados placeholders. Para mayor énfasis, Burp los colorea en verde.
+
+![Place holders](../img/lab-25-E/202311081658.png)
+
+El ataque consiste en enviar sucesivas request donde vamos cambiando el campo ***answer***. El resto nos interesa dejarlos como está, así que para decirle a Burp que no los toque, situamos el cursor en su interior y hacemos clic en el botón ***Clear §***.
+
+![Clear](../img/lab-25-E/202311081700.png)
+
+Retira los placeholders de forma que solo quede el de ***answer***, como indica la imagen.
+
+![Place holder answer](../img/lab-25-E/202311081703.png)
+
+Ya le hemos dicho a Burp cuál es el parámetro de la Request que vamos a ir cambiando. Ahora debemos decirle cómo hacerlo. Para la práctica que estamos desarrollando, vamos a agregar un diccionario con las posibles soluciones a la pregunta de seguridad.
+
+Si no has clonado el repositorio es el momento. Sitúate en tu directorio Home. En una terminal, escribe.
+```
+cd ~
+```
+
+Clona el repo.
+```
+git clone https://github.com/antsala/SecureProgramming_LABS.git
+```
+
+Entra en el directorio '25'
+```
+cd ~/SecureProgramming_LABS/25
+```
+
+Abre el archivo con el diccionario y estúdialo.
+```
+nano diccionario.txt
+```
+
+Cierra el archivo sin modificar. En un ataque real, este diccionario se puede generar con herramientas especialicadas como ***crunch*** y otras herramientas.
+
+Vuelve a Burp e importa el diccionario.
+
+
+
+
+
+Es el momento de atacar. Para ello hacemos clic en el botón ***Start attack***.
+
+![Start Attack](../img/lab-25-E/202311081704.png)
+
+
+
+
+ 
 
 
 
@@ -501,7 +621,7 @@ Asegúrate que está seleccionado el almacén de ***Autoridades Certificadoras**
 
 
 
-https://rajendrakv.wordpress.com/2020/06/14/brute-force-using-burp-suite-and-owasp-zap/
+
 https://curiositykillscolby.com/2020/12/09/pwning-owasps-juice-shop-pt-44-reset-benders-password/
 
 
