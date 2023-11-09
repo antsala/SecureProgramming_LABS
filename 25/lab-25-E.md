@@ -646,6 +646,121 @@ Haz clic en el botón ***Change***. Habrás robado la identidad de Bender en la 
 
 Nota: A partir de ahora ten en cuenta que proxy de ataque usas. Firefox está configurado para usar como proxy Burp. Si quieres volver a usar ZAP, es conveniente que quites el proxy de la configuración de Firefox.
 
+
+## Ejercicio 4: Resetear la contraseña del usuario ***Jim*** por medio del mecanismo de contraseña olvidada.
+
+Este es otro ejemplo de como un ataque OSINT puede robar la credencial de un usuario de la aplicación. En la actualidad todos estamos muy sobre expuestos a las redes sociales y es inevitable la fuga de información personal. Si el usuario utiliza información personal en la autenticación, el actor de la amenaza podría descubrirla.
+
+***OBJETIVO***: Roba la identidad del usuario Jim en la aplicación.
+
+***PISTAS***: 
+
+* El nombre de usuario de la víctima puedes obtenerlo leyendo las reseñas de los productos. Para agilizar la práctica, ese nombre de usuario es 'jim@juice-sh.op'.
+* Ataca a través del procedimiento de recordar la contraseña olvidada.
+* No hace falta usar ZAP ni Burp.
+* Investiga en Internet sobre el personaje Jim.
+
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Desde el navegador, conecta con la URL de recuperación de password.
+```
+http://192.168.20.80:3000/#/forgot-password
+```
+
+En el formulario de contraseña olvidada (Forgot Password) introduce la siguiente información.
+
+En ***Email***
+```
+jim@juice-sh.op
+```
+
+![Pregunta seguridad](../img/lab-25-E/202311091826.png)
+
+Como puedes ver en la pregunta de seguridad elegida, debemos proporcionar ***el segundo nombre*** (se supone que es un nombre compuesto) del hermano mayor del usuario ***Jim***
+
+Ahora, el actor de la amenaza necesita conocer la verdadera identidad del usuario y como veníamos didiendo, hay usuarios que exponen demasiada información personal en las aplicaciones que usan.
+
+Aunque esta recogida de información puede ser automatizada usando herramientas apropiadas, en este caso vamos a realizar la manualmente para demostrar esta técnica de ataque. Para ello, el actor de la amenaza realiza un recorrido por todos los productos, observando si hay alguna reseña escrita por la víctima.
+
+Visualiza las reseñas del siguiente producto. En la barra de direcciones del navegador, escribe.
+```
+http://192.168.20.80:3000/#/search?q=velcro
+```
+
+En la imagen, puedes ver un comentario interesante escrito por la víctima.
+
+![reseña 1](../img/lab-25-E/202311091833.png)
+
+En este otro producto también hay una reseña de Jim.
+```
+http://192.168.20.80:3000/#/search?q=green
+```
+
+Puedes ver otro comentario interesante que puede conducir a la identificación de la víctima.
+
+![reseña 2](../img/lab-25-E/202311091842.png)
+
+Por último, otra pista.
+```
+http://192.168.20.80:3000/#/search?q=sticker
+```
+
+Esta última reseña contribuye a desvelar la identidad real de la víctima.
+
+![reseña 3](../img/lab-25-E/202311091846.png)
+
+Que resulta ser...
+
+![James T Kirk](../img/lab-25-E/202311091848.png)
+
+Como la pregunta de seguridad está relacionada con el segundo nombre de su hermano, ahora es necesario descubrirlo. Esto no debe ser un gran problema por el motivo mencionado anteriormente, la sobre exposición que tenemos en las redes sociales.
+
+Por ejemplo, podríamos usar herramientas basadas en IA para conseguir esa información. Aunque actualmente no están del todo desarrolladas, no va a transcurrir demasiado tiempo hasta que tengamos la opción de usar este tipo de tecnología para extraer información personal de la ingente cantidad de datos almacenados en las redes sociales, por ejemplo.
+
+Como la práctica hace referencia a un personaje famoso, podemos usar Chat GPT para simular como serán estas herramientas.
+
+![Samuel](../img/lab-25-E/202311091852.png)
+
+Así que la respuesta a la pregunta de seguridad es ***Samuel***.
+
+Desde el navegador, conecta con la URL de recuperación de password.
+```
+http://192.168.20.80:3000/#/forgot-password
+```
+
+En el formulario de contraseña olvidada (Forgot Password) introduce la siguiente información.
+
+En ***Email***
+```
+jim@juice-sh.op
+```
+
+En ***Security Question*** escribe.
+```
+Samuel
+```
+
+En ***New Password***
+```
+Pa55w.rd
+```
+
+Y en ***Repeat New Password***
+```
+Pa55w.rd
+```
+
+Haz clic en el botón ***Change*** y habrás robado la credencial de Jim.
+
+
+![Hackeado](../img/lab-25-E/202311091857.png)
+
+Este ha sido un ejemplo trivial de lo relativamente sencillo que resulta encontrar información personal de la víctima usando técnicas OSINT. Si la autenticación depende de esta información, entonces el actor de la amenaza podría romperla.
+
+
+
+
 ***FIN DEL LABORATORIO***
 
 [Vamos al siguiente lab](../25/lab-25-F.md)

@@ -40,12 +40,15 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Resetear el password del usuario Bjoern a través del mecanismo de contraseña olvidada.
    - Iniciar sesión con la cuenta de Gmail de Bjoern.
    - Resetear la contraseña del usuario ***Bender*** por medio del mecanismo de contraseña olvidada.
+   - Resetear la contraseña del usuario ***Jim*** por medio del mecanismo de contraseña olvidada.
 
 6. Laboratorio 25-F: Exposición de datos sensibles (***Sensitive Data Exposure***).
    - Acceder a un documento confidencial.
    - Ganar acceso a los logs del servidor.
    - Fuga de información a través de la API.
    - Acceder a un archivo de backup olvidado por un programador.
+   - Localiza el endpoint que sirve datos de uso de la aplicación para que sean leídos por un popular sistema de monitorización.
+   - Robar los datos personales de otro sin usar inyección.
 
 7. Laboratorio 25-G: Validación de datos de entrada inapropiada (***Improper Input Validation***).
    - Registrar a un usuario con privilegios de administrador. 

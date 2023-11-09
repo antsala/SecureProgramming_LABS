@@ -114,7 +114,7 @@ La aplicación debe funcionar.
 
 ***ZAP*** o ***Zed Attack Proxy*** es una herramienta gratuita proveniente del proyecto ***OWASP*** cuya finalidad es realizar pentesting sobre aplicaciones web. Se instala como un proxy, interceptando el tráfico entre el navegador del usuario y la aplicación web que estamos evaluando.
 
-En el mercado disponemos de ***Burp***, otra herramienta que hace lo mismo, pero en este caso es comercial y no nos deja usar la mayoría de sus funciones si no se adquiere una licencia.
+En el mercado disponemos de ***Burp***, otra herramienta que hace lo mismo, pero en este caso es comercial y no nos deja usarlo plenamente si no se adquiere una licencia.
 
 Procedemos a instalar ***ZAP***.
 

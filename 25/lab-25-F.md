@@ -215,6 +215,114 @@ Se puede comprobar que por medio de está técnica podemos saltar la comprobaci�
 ![open](../img/lab-25-F/202212051011.png)
 
 
+## Ejercicio 5: Localiza el endpoint que sirve datos de uso de la aplicación para que sean leídos por un popular sistema de monitorización.
+
+
+***OBJETIVO***: Localiza el endpoint que sirve los datos y comprueba que no está bien protegido.
+
+***PISTAS***: 
+
+* Busco por Internet cual es uno de los sistemas de monitorización Open Source más populares. Su nombre tiene que ver con el personaje histórico que robó el fuego a los dioses y lo entregó a los humanos.
+* Estudia cómo se realiza la configuración por defecto con la idea de localizar alguna URL.
+* Conectate a dicha URL y verifica que se está sirviendo datos de monitorización.
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Efectivamente, el software referido es ***Prometheus***, consistente en un kit de herramientas de monitoreo y alerta de sistemas de código abierto originalmente creado en SoundCloud. Desde su creación en 2012, muchas empresas y organizaciones han adoptado Prometheus, y el proyecto tiene una comunidad de desarrolladores y usuarios muy activa. Ahora es un proyecto de código abierto. Prometheus se unió a la Cloud Native Computing Foundation en 2016 como segundo proyecto alojado, después de Kubernetes.
+
+Los desarrolladores de Juice Shop no se han molestado en cambiar la URL donde se sirven las métricas, es decir, usa la configuración por defecto. 
+
+En este link, puedes acceder a la documentación del producto. 
+```
+https://prometheus.io/docs/introduction/first_steps/
+```
+
+Una rápida lectura al mismo te servirá para determinar cuál es la URL que sirve las métricas. Concretamente la siguiente.
+```
+http://192.168.20.80:3000/metrics
+```
+
+Conectate con el navegador y tendrás el reto resuelto.
+
+![Métricas](../img/lab-25-F/202311011426.png)
+
+
+## Ejercicio 6: Robar los datos personales de otro sin usar inyección.
+
+
+***OBJETIVO***: Obtener datos de un usuario sin conocer su credencial.
+
+***PISTAS***: 
+
+* Usa la función de exportación de DSR (Respuesta a las solicitudes del interesado) del RGPD. La tienes disponible en ***Account/Privacy&Security/Request Data Export***.
+* Usa un proxy de ataque para determinar qué información devuelve una response cuando has realizado un pedido. Observa cómo se ofusca la dirección de correo electrónico en dicha response e intenta determinar la lógica de dicha ofuscación.
+* Elige un usuario víctima en la aplicación. 
+* Registra un nuevo usuario cuyo email se ofusque de la misma forma que el de la víctima.
+* Realiza una request al servicio de exportación de datos de DSR y obtendrás la información de los pedidos de la víctima.
+* Es necesario usar ZAP o Burp.
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+El Reglamento general de protección de datos (RGPD) de la Unión Europea (UE) otorga derechos importantes a las personas con respecto a sus datos. Cada vez es más común que las aplicaciones incorporen servicios que permitan conocer al interesado la información que la aplicación almacena sobre ellos, por ejemplo, los pedidos que se han realizado.
+
+Una implementación débil de este servicio puede conducir a que un actor de la amenaza exfilter información de los clientes de una organización.
+
+Inicia ZAP. En una terminal, escribe
+```
+owasp-zap
+```
+
+Realiza una exploración manual a la aplicación.
+```
+http://192.168.20.80:3000
+```
+
+Lógate con tu usuario y realiza un pedido.
+
+![Pedido](../img/lab-25-F/202311091941.png)
+
+Necesitamos acceder a la información del pedido. Para ello selecciona la siguiente opción de la aplicación: ***Account/Orders&Payments/Order History***
+
+![Orden History](../img/lab-25-F/202311091949.png)
+
+Haz clic en el icono del "Camión", tal y como indica la imagen. Te llevará a la página de seguimiento del pedido.
+
+![Camión](../img/lab-25-F/202311091951.png)
+
+Observa la URL en el navegador. 
+
+![URL](../img/lab-25-F/202311091953.png)
+
+Ahora debes localizarla en el historial de ZAP.
+
+![Historial](../img/lab-25-F/202311091954.png)
+
+Haz doble clic en ella y selecciona la response. Podrás observar cómo se ha ofuscado el campo ***email***. ¿Eres capaz de identificar el patrón elegido por el programador?
+
+![Response](../img/lab-25-F/202311091956.png)
+
+Sin duda, la ofuscación consiste en retirar las vocales y sustituirlas por un asterisco. Esta información será muy importante para realizar el hackeo.
+
+Vamos a proceder a realizar una consulta DSR para el usuario que actualmente está logado. Para ello accede a la opción ***Account/Privacy&security/Request Data Export***.
+
+![DSR](../img/lab-25-F/202311092000.png)
+
+Selecciona ***JSON*** como formato de salida, resuelve el catpcha y haz clic en el botón ***Request***.
+
+![Request](../img/lab-25-F/202311092002.png)
+
+Podrás ver la información del pedido que has realizado.
+
+![Pedido](../img/lab-25-F/202311092003.png)
+
+Ahora viene el hackeo. Elige a tu víctima, por ejemplo a ***Jim***. Su email es ***jim@juice-sh.op***. Sustituye las vocales por asteriscos. El resultado será "j*m@j**c*-sh.*p".
+
+
+
+
+
+
+
 ***FIN DEL LABORATORIO***
 
 [Vamos al siguiente lab](../25/lab-25-G.md)
