@@ -315,12 +315,27 @@ Podrás ver la información del pedido que has realizado.
 
 ![Pedido](../img/lab-25-F/202311092003.png)
 
-Ahora viene el hackeo. Elige a tu víctima, por ejemplo a ***Jim***. Su email es ***jim@juice-sh.op***. Sustituye las vocales por asteriscos. El resultado será "j*m@j**c*-sh.*p".
+Ahora viene el hackeo. Elige a tu víctima, por ejemplo el usuario con el que estás logado. Su email es ***el_lado_oscuro@hotmail.es***. Sustituye las vocales por asteriscos. El resultado del algoritmo de ofuscación será el siguiente.
 
+![ofuscación](../img/lab-25-F/202311092011.png)
 
+Cierra la sesión del usuario actual (que será tu víctima) y registra un nuevo usuario cuyo email genere el mismo resultado para la ofuscación, por ejemplo, el siguiente.
 
+![Nuevo usuario](../img/lab-25-F/202311092013.png)
 
+En la imagen puedes comprobar como se ha iniciado sesión con el nuevo usuario.
 
+![Nuevo usuario 2](../img/lab-25-F/202311092015.png)
+
+Este usuario es nuevo y no ha realizado ningún pedido en la aplicación.
+
+Vuelve a solicitar una exportación de datos DSR en ***Account/Privacy&Security/Request Data Export***. Selecciona ***JSON*** y resuelve el captcha si se pide.
+
+Podrás comprobar que se exfiltra la información de pedidos de la víctima.
+
+![DSR](../img/lab-25-F/202311092019.png)
+
+Esto es debido a que la ofuscación del email del usuario con el que estás logado produce el mismo resultado que para el email de la víctima. La debilidad de la aplicación consiste en que se realizan consultas a la base de datos con el email ofuscado, lo cual conduce a esta vulnerabilidad.
 
 
 ***FIN DEL LABORATORIO***
