@@ -62,3 +62,4 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    
 8. Laboratorio 25-H: Romper la autorización (***Broken Access Control***).
    - Eliminar las reseñas de 5 estrellas de los clientes.
+   - Poner una reseña a nombre de otro usuario.
