@@ -249,7 +249,6 @@ Conectate con el navegador y tendrás el reto resuelto.
 
 ## Ejercicio 6: Robar los datos personales de otro sin usar inyección.
 
-
 ***OBJETIVO***: Obtener datos de un usuario sin conocer su credencial.
 
 ***PISTAS***: 
@@ -336,6 +335,102 @@ Podrás comprobar que se exfiltra la información de pedidos de la víctima.
 ![DSR](../img/lab-25-F/202311092019.png)
 
 Esto es debido a que la ofuscación del email del usuario con el que estás logado produce el mismo resultado que para el email de la víctima. La debilidad de la aplicación consiste en que se realizan consultas a la base de datos con el email ofuscado, lo cual conduce a esta vulnerabilidad.
+
+
+## Ejercicio 7: Localizar en Internet información fugada del password de un usuario.
+
+***OBJETIVO***: Localizar una contraseña exfiltrada en Internet.
+
+***PISTAS***: 
+
+* Busca información en ***Stackoverflow.com*** sobre los log de acceso. Concretamente busca la etiqueta ***access-log***.
+* De las entradas anteriores localiza una denominada "less-verbose-access-logs-using-expressjs-morgan".
+* En ella hay un link a ***PasteBin***. Síguelo y localiza contenido relacionado con el cambio de password.
+* Decodifica el password y determina a qué usuario de Juice Shop pertenece.
+* Inicia sesión con la credencial de dicho usuario.
+* No es necesario usar ZAP o Burp.
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+El uso de servicios como ***Pastebin*** o similares puede plantear varios problemas de seguridad. En primer lugar, la naturaleza pública y accesible de estos servicios puede exponer información confidencial si los usuarios no configuran adecuadamente la privacidad de sus publicaciones. Datos sensibles, como ***contraseñas***, ***información personal*** o ***detalles de acceso a sistemas***, pueden caer en manos equivocadas si no se toman precauciones.
+
+Además, estos servicios a menudo se utilizan para ***compartir código fuente y scripts***. Si los usuarios no tienen cuidado, podrían compartir inadvertidamente fragmentos de código que permitenque a los actores de la amenaza obtener información valiosa para llevar a cabo ataques.
+
+Otro riesgo está relacionado con el almacenamiento temporal de datos en estos servicios. Aunque muchos de ellos eliminan automáticamente el contenido después de un tiempo, es posible que la información sensible permanezca en caché o sea accesible temporalmente, lo que podría ser explotado por actores malintencionados.
+
+En resumen, el uso de servicios como Pastebin puede plantear riesgos de privacidad y seguridad si los usuarios no son conscientes de las configuraciones de privacidad, comparten inadvertidamente información sensible o no consideran las implicaciones de seguridad al utilizar estos servicios para compartir código y datos.
+
+Un actor de la amenaza, lee las entradas relacionadas con una cuestión concreta. El programador pregunta en el foro cómo puede reducirse la cantidad de información que se genera al usar ***Morgan***.
+
+Morgan es un middleware de registro (logging) para aplicaciones Express. Se utiliza para registrar las solicitudes HTTP entrantes en el servidor. Proporciona información detallada sobre cada solicitud, como la URL, el método HTTP utilizado y el código de estado de la respuesta. Este middleware es útil para el desarrollo y la depuración, ya que permite rastrear y analizar el comportamiento de las solicitudes.
+
+Visita este link en stackoverflow.
+```
+https://stackoverflow.com/questions/tagged/access-log
+```
+
+Localiza información sobre.
+```
+less vervose access logs morgan
+```
+
+La búsqueda debe llevarte a la siguiente URL.
+```
+https://stackoverflow.com/questions/57061271/less-verbose-access-logs-using-expressjs-morgan
+```
+
+Lee el post y observa que se ha publicado un enlace hacia ***PasteBin***. Sígue dicho enlace.
+
+![PasteBin](../img/lab-25-F/202311100853.png)
+
+Como podrás comprobar, el enlace de PasteBin permite acceder a una cantidad de información importante. 
+
+![PasteBin 2](../img/lab-25-F/202311100900.png)
+
+Usa el buscador y localiza el contenido relacionado con.
+```
+password
+```
+
+Aparecerá la siguiente entrada en el log.
+
+![Log](../img/lab-25-F/202311100902.png)
+
+Observa que los parámetros ***new*** y ***repetat*** tienen contenidos diferentes, por lo que la aplicación devuelve un ***401*** indicando que el cambio de password ha fallado (porque no coinciden los valores). Esto podría indicar que el password actual aún no ha sido cambiado y, además, que tenemos su hash, que es.
+```
+0Y8rMnww$*9VFYE%C2%A759-!Fg1L6t&6lB
+```
+
+El actor de la amenaza tiene una parte de la solución, el hash, pero no conoce el usuario al que le corresponde. Para resolver este problema, puede:
+
+* Hacer un ataque de ***Password Spraying***, una vez obtenida la lista de los usuarios (por medio de otro ataque descrito en estos laboratorios)
+* Hashear el password obtenido y compararlo con la lista de hashes de los usuarios (también obtenida desde otro ataque previo)
+
+Para acelerar el desarrollo de esta práctica, te facilitamos el usuario correcto, que es.
+```
+J12934@juice-sh.op
+```
+
+Ya solo queda probar si podemos logarnos con esa credencial. Conéctate con el navegador a.
+```
+http://192.168.20.80:3000/login#/login
+```
+
+Como usuario pon.
+```
+J12934@juice-sh.op
+```
+
+Y como contraseña, la capturada.
+```
+0Y8rMnww$*9VFYE§59-!Fg1L6t&6lB
+```
+
+Te has logado correctamente.
+
+![Logged](../img/lab-25-F/202311100915.png)
+
+La debilidad que conduce al hackeo de la aplicación no puede ser achacada a esta misma, sino a una falta de celo del desarrollador al consultar los foros. Es muy común, cuando compartes información, por ejemplo la de un log, no escrudiñarla con la idea de detectar si se está fugando información importante. Generalmente nos limitamos a usar copiar y pegar y esto podría conducir a problemas de seguridad.
 
 
 ***FIN DEL LABORATORIO***

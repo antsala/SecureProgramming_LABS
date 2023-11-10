@@ -49,6 +49,8 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Acceder a un archivo de backup olvidado por un programador.
    - Localiza el endpoint que sirve datos de uso de la aplicación para que sean leídos por un popular sistema de monitorización.
    - Robar los datos personales de otro sin usar inyección.
+   - Localizar en Internet información fugada del password de un usuario.
+
 
 7. Laboratorio 25-G: Validación de datos de entrada inapropiada (***Improper Input Validation***).
    - Registrar a un usuario con privilegios de administrador. 
