@@ -91,16 +91,21 @@ Envía la request y observa la response. Efectivamente, como sospechamos se ha e
 
 ![id 15](../img/lab-25-H/202311102028.png)
 
-Solo queda mejorar el ataque e introducir el id de un usuario "importante" en la aplicación, por ejemplo, el administrador. En hackeos previos fuimos capaces de obtener los ids de todos los usuarios. El del administrador es el.
+Solo queda mejorar el ataque e introducir el id de un usuario "importante" en la aplicación, por ejemplo, el administrador. En hackeos previos fuimos capaces de obtener los ids de todos los usuarios. El del administrador es el ***1***.
 
+Modifica el id y cambia el ***15*** por el ***1***. Cambia también el comentario, para que no aparezca el texto ***anonymous***. En su lugar puedes poner, por ejemplo, el usuario del administrador
 
+![id 1](../img/lab-25-H/202311102040.png)
 
+Envía de nuevo la request con Repeater y desactiva la interceptación.
 
+Para leer las reseñas de los clientes, accede a la opción ***About us*** del menú izquierdo.
 
+![About us](../img/lab-25-H/202311102042.png)
 
+Podrás ves una magnífica reseña del administrador de Juice Shop.
 
-
-
+![Reseña](../img/lab-25-H/202311102043.png)
 
 
 
