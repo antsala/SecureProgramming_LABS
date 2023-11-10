@@ -261,6 +261,41 @@ Como puedes observar, se aplicará el descuento del cupón. Una mala idea aplica
 ![Dcto](../img/lab-25-G/202311101435.png)
 
 
+## Ejercicio 4: Dar una valoración devastadora de cero estrellas a la tienda.
+
+***OBJETIVO***: Poner una reseña con cero estrellas (el mínimo es una) en la tienda.
+
+***PISTAS***: 
+* Visita en formulario ***Customer Feedback*** y escribe un comentario. Resuelve el Captcha.
+* Activa Burp y modifica la request para enviar 0 estrellas en la reseña.
+
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Activa Burp y configuralo como proxy en Firefox. Desabilita la interceptación.
+
+Carga el formulario en la siguiente URL.
+```
+http://192.168.20.80:3000/#/contact
+```
+
+Rellénalo como ves en la imagen, pero no toques el control de ***Rating*** (Estrellas) de forma que el botón ***Submit*** no se active.
+
+![Feedback](../img/lab-25-G/202311101820.png)
+
+
+Accede a las herramientas del desarrollador y localiza el botón. Usa el buscador y localiza el elemento "submitButton*. Observa la etiqueta que indica que el botón está desabilitado.
+
+![Disabled](../img/lab-25-G/202311101820.png)
+
+El hack consiste en modificar la etiqueta, de forma que se active el botón y se pueda enviar los datos del formulario. Como ***Rating*** no lo has tocado, está inicializado a nulo, por lo que eso mmismo será lo que se envíe al servidor.
+
+Haz doble clic en la etiqueta ***Disabled*** y elimínala. Haz clic en el botón ***Submit***, que permanecerá el gris pero estará activo.
+
+
+
+
+
 
 
 
