@@ -301,26 +301,6 @@ Observa la imagen. En primer lugar elige ***Repeater*** en el menú. Luego, en l
 
 Como podrás comprobar, el servidor no acepta un rating de cero. Con ***Repeater*** puedes probar distintos valores (-4, null, 14), observarás como la Integridad Referencial de la base de datos no admite ningún valor extraño (En la versión anterior de Juice Shop, el rating se guardaba en una columna de tipo entero, lo que permitía almacenar valores fuera del rango [1-5])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ***FIN DEL LABORATORIO***
+
+[Vamos al siguiente lab](../25/lab-25-H.md)
