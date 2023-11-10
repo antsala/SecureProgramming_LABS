@@ -9,27 +9,25 @@ Requisitos:
 
 Una aplicación incorrecta de los permisos de la aplicación puede conducir a que un usuario pueda realizar actividades que en principio no debería poder realizar. Estos privilegios pueden ser usados para eliminar archivos, ver información confidencial o instalar malware. Habitualmente ocurre cuando un sistema presenta vulnerabilidades que permiten saltarse el sistema de autorización.
 
-## Ejercicio 1: ?????
+## Ejercicio 1: Cambiar el nombre de un usuario realizando un CSRF desde otro origen.
 
-***OBJETIVO***: ?????
+***OBJETIVO***: Cambiar el nombre del usuario.
 
 ***PISTAS***: 
 
-* ????
+* Necesitarás que otro origen (sitio web) haga el submit del formulario del perfil de usuario de la aplicación. Generalmente este ataque se produce mediante el envío de un link malicioso a la víctima para conseguir que esta visite el otro origen mientras se encuentra logada en Juice Shop.
 
 ***RESOLUCIÓN***. Los pasos para resolver el reto son.
 
-Como siempre iniciamos ***ZAP***.
-
-Realiza con ZAP una exploración manual sobre la siguiente URL.
+Si no estás logado en Juice Shop, hazlo. A continuación accede a la zona de perfil del usuario.
 ```
-http://192.168.20.60:3000
+http://192.168.20.80:3000/profile
 ```
 
-A continuación registra un nuevo usuario, tal y como se muestra en la imagen.
-(Nota: observa la URL en la que se crea el usuario)
+Asegúrate de poner un nombre de usuario, tal y como muesta la imagen.
 
-![Register](../img/lab-25-G/202212051046.png)
+![Antuan](../img/lab-25-H/202311101916.png)
+
 
 
 

@@ -61,3 +61,4 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Dar una valoración devastadora de cero estrellas a la tienda.
    
 8. Laboratorio 25-H: Romper la autorización (***Broken Access Control***).
+   - Cambiar el nombre de un usuario realizando un CSRF desde otro origen.
