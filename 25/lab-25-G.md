@@ -198,6 +198,77 @@ http://192.168.20.80:3000/#/administration
 Podrás comprobar que eres administrador de la aplicación.
 
 
+## Ejercicio 4: Usar un cupón expirado
+
+***OBJETIVO***: Conseguir un descuento que ya ha expirado.
+
+***PISTAS***: 
+* Realiza un pedido e intenta jugar con la aplicación escribiendo el código del cupón.
+* Usa las herramientas del desarrollador y localiza en el código los descuentos.
+* Cambia la hora del sistema para que coincida con la del cupón.
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Logate en la aplicación y realiza un pedido. Cuando llegues a la parte del pago, intenta escribir el código de un cupón para que te apliquen un descuento.
+
+![Cupón](../img/lab-25-G/202311101343.png)
+
+Como muchas aplicaciones modernas, una parte importante de la lógica se ejecuta en el navegador del usuario. Estudiamos el Javascript con la intención de localizar el código que gestiona la aplicación del cupón.
+
+Habilita las herramientas del desarrollador y abre el archivo ***main.js***.
+
+![main.js](../img/lab-25-G/202311101346.png)
+
+Para ahorrar tiempo en el desarrollo de la práctica, usa el buscador y escribe lo siguiente.
+```
+WMNSDY
+```
+
+Si eres cliente habitual de Juice Shop sabrás que todos los años emite un cupón que debe ser usado el Día de la Mujer, que es el 8 de Marzo. 
+
+En el código puedes ver las distintas campañas a lo largo de los años.
+
+![main.js](../img/lab-25-G/202311101351.png)
+
+Cada cupón contiene un código, un campo que indica su validez y la cantidad de descuento que aplica.
+
+Nos fijamos en uno de los cupones, por ejemplo el del Día de la Mujer del año 2023, cuyo código es ***WMNSDY2023*** y hace un descuento del 60%.
+
+Volvemos a la aplicación y escribimos dicho código de descuento y hacemos clic en el botón ***Redeem***.
+
+![redeem](../img/lab-25-G/202311101354.png)
+
+El cupón no es válido.
+
+![No válido](../img/lab-25-G/202311101355.png)
+
+Si el cupón es para el Día de la Mujer y uno de los campos del cupón es sospechoso de contener la fecha (codificada de alguna manera), si esta comprobación se realiza en el cliente, podemos intentar cambiar la fecha del ordenador.
+
+Nota: Ten en cuenta que Linux se sincronizará de nuevo con el RTC y la fecha/hora volverá a ser la actual, por lo que debes ser rápido a la hora de relizar el hackeo. 
+
+Para ello, en una terminal de Kali, escribimos.  
+```
+sudo timedatectl set-time '2023-03-08'
+```
+
+Vuelve a realizar el pago usando el mismo código de cupón.
+```
+WMNSDY2023
+```
+
+Como puedes observar, se aplicará el descuento del cupón. Una mala idea aplicar los descuentos en el lado del cliente.
+
+![Dcto](../img/lab-25-G/202311101435.png)
+
+
+
+
+
+
+
+
+
+
 
 
 

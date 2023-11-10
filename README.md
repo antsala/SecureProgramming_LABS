@@ -57,5 +57,6 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Registrar a un usuario con privilegios de administrador. 
    - Hacer un pedido que te hará rico.
    - Registrar un usuario con privilegios de administrador.
+   - Usar un cupón expirado.
    
 8. Laboratorio 25-H: Romper la autorización (***Broken Access Control***).
