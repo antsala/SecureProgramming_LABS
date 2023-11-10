@@ -162,19 +162,19 @@ En Burp, activa la interceptación.
 
 Regresa al navegador y haz clic en ***Register***. Vuelve a Burp y haz clic en el botón ***Forward*** hasta alcanzar la request que nos interesa. Debe ser parecida a esta.
 
-![Request](../img/lab-25-G/202311041126.png)
+![Request](../img/lab-25-G/202311101053.png)
 
 En la request puedes ver los campos que se envian al servidor. Sería interesante conocer cuáles son los enviados cuando el usuario es un administrador. Para facilitar la elaboración de esta práctica te aportamos esa información. No obstante, si quieres obtenerla por tí mismo, vuelve a realizar el laboratorio donde nos logamos como administrador. El laboratorio es ***lab-25-D Ejercicio 4. Iniciar sesión con el usuario administrador***.
 
 En la siguiente imagen puedes ver dos request enviadas al servidor. Una para cuando el usuario es administrador y la otra cuando es un cliente.
 
-![Request2](../img/lab-25-G/202311041126.png)
+![Request2](../img/lab-25-G/202311101057.png)
 
 Si te das cuenta, la única diferencia importante está en el campo ***role***, que tiene el valor ***admin*** o ***customer***.
 
 En Burp, vamos a modificar la request que tenemos capturada, agregando ***role=admin***, tal y como puedes ver en la siguiente imagen.
 
-![Role Admin](../img/lab-25-G/202311041126.png)
+![Role Admin](../img/lab-25-G/202311101104.png)
 
 Haz clic en el botón ***Forward*** para enviar la Request al servidor y desactiva la interceptación.
 
