@@ -432,6 +432,78 @@ Te has logado correctamente.
 
 La debilidad que conduce al hackeo de la aplicación no puede ser achacada a esta misma, sino a una falta de celo del desarrollador al consultar los foros. Es muy común, cuando compartes información, por ejemplo la de un log, no escrudiñarla con la idea de detectar si se está fugando información importante. Generalmente nos limitamos a usar copiar y pegar y esto podría conducir a problemas de seguridad.
 
+## Ejercicio 8: Determina la respuesta a la pregunta de seguridad de ***Emma***.
+
+***OBJETIVO***: Descubrir la respuesta a través de una pista visual.
+
+***PISTAS***: 
+
+* La víctima tiene como email ***emma@juice-sh.op***
+* Intenta cambiar la contraseña de emma para verificar cuál es su pregunta de seguridad.
+* Visualiza la fotogalería de la aplicación.
+* Céntrate en la última, la del edificio y usa un editor gráfico que pueda realizar ampliaciones.
+* Localiza alguna pista conducente a ser la respuesta de la pregunta de seguridad.
+* No es necesario usar ZAP o Burp.
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Los usuarios a menudo eligen contraseñas basadas en pistas visuales porque les resulta más fácil recordar información visual que secuencias de caracteres alfanuméricos o complejas. Aquí hay algunas razones por las cuales algunos usuarios optan por contraseñas basadas en pistas visuales:
+
+* Memoria visual fuerte: Algunas personas tienen una memoria visual más fuerte que una memoria basada en texto. Recordar patrones visuales o imágenes puede resultar más natural y menos propenso a errores.
+
+* Asociación con imágenes o eventos significativos: Las pistas visuales pueden estar vinculadas a eventos o imágenes significativos en la vida del usuario. Por ejemplo, podrían utilizar el nombre de su mascota, el año de su graduación o una imagen que sea memorable para ellos.
+
+* Creatividad y originalidad: La elección de pistas visuales a menudo permite a los usuarios ser más creativos y originales en la creación de sus contraseñas. Esto puede hacer que la contraseña sea más única y, en teoría, más segura.
+
+Aunque las contraseñas basadas en pistas visuales pueden tener ventajas en términos de facilidad de recordar, también es importante señalar que a veces pueden ser menos seguras si son predecibles o fácilmente asociadas con la vida del usuario. 
+
+Obtén la pregunta de seguridad elegida por emma. Conéctate a la siguiente dirección.
+```
+http://192.168.20.80:3000/login#/forgot-password
+```
+
+En Email escribe.
+```
+emma@juice-sh.op
+```
+
+Como puedes observar en la imagen, la pregunta de seguridad tiene que ver con el antiguo lugar de trabajo de Emma.
+
+![Pregunta seguridad](../img/lab-25-F/202311100940.png)
+
+Visita la foto galería de la aplicación, donde los usuarios suben fotos. Haz clic en el menú de la parte izquierda de la aplicación y elige.
+
+![Photowall](../img/lab-25-F/202311100943.png)
+
+El pseudónimo de emma es ***E=ma2***. Localiza la imagen, descárgala, amplíala y localiza información de interés.
+
+En una ventana podrás ver lo siguiente, que podría tener que ver con la respuesta a la pregunta de seguridad.
+
+![ITSec](../img/lab-25-F/202311100946.png)
+
+Accede a la página de recuperación de contraseña.
+```
+http://192.168.20.80:3000/login#/forgot-password
+```
+
+Como usuario pon este correo.
+```
+emma@juice-sh.op
+```
+
+Y como respuesta a la pregunta de seguridad, escribe.
+```
+ITsec
+```
+
+En nueva contraseña y repetir contraseña, escribe.
+```
+Pa55w.rd
+```
+
+haz clic en el botón ***Change*** y habrás cambiado la contraseña.
+
+Este hackeo demuestra que muchos usuarios usan pistas visuales para sus credenciales o información secreta. Un actor de la amenaza que tenga la intuición (y suerte) de dar con la clave, puede hackear la aplicación. Como programadores no podemos controlar este comportamiento del usuario.
 
 ***FIN DEL LABORATORIO***
 

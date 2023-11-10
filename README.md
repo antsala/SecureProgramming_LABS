@@ -50,6 +50,7 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Localiza el endpoint que sirve datos de uso de la aplicación para que sean leídos por un popular sistema de monitorización.
    - Robar los datos personales de otro sin usar inyección.
    - Localizar en Internet información fugada del password de un usuario.
+   - Determina la respuesta a la pregunta de seguridad de ***Emma***.
 
 
 7. Laboratorio 25-G: Validación de datos de entrada inapropiada (***Improper Input Validation***).
