@@ -279,18 +279,29 @@ Carga el formulario en la siguiente URL.
 http://192.168.20.80:3000/#/contact
 ```
 
-Rellénalo como ves en la imagen, pero no toques el control de ***Rating*** (Estrellas) de forma que el botón ***Submit*** no se active.
+Rellénalo como ves en la imagen, selecciona alguna estrella para que se active el botón ***Submit***. No hagas clic en el botón.
 
-![Feedback](../img/lab-25-G/202311101820.png)
+![Feedback](../img/lab-25-G/202311101842.png)
+
+Ve a Burp y activa la interceptación. A continuación haz clic en el botón ***Forward*** hasta que veas una request como la siguiente.
+
+![Request](../img/lab-25-G/202311101845.png)
+
+Modifica el rating de forma que aparezca un valor inverosímil, por ejemplo 0. El control de rating tiene un rango dinámico de 1 a 5 (estrellas) Envía la Request y desactiva la interceptación.
+
+Esta versión de Juice Shop, en formato de contenedor, ya no es vulnerable a este ataque, pero el procedimiento indicado es útil para valorar la seguridad de las aplicaciones.
+
+Accede al historial de request  (***HTTP History***). Localiza la request que envió la valoración. Haz clic con botón derecho y selecciona ***Send to Repeater***.
+
+![Send to repeater](../img/lab-25-G/202311101856.png)
+
+Observa la imagen. En primer lugar elige ***Repeater*** en el menú. Luego, en la parte inferior, asegurate que ***Rating=0***. Ahora, haz clic en el botón ***Send*** y observa la response.
+
+![Repeater](../img/lab-25-G/202311101900.png)
+
+Como podrás comprobar, el servidor no acepta un rating de cero. Con ***Repeater*** puedes probar distintos valores (-4, null, 14), observarás como la Integridad Referencial de la base de datos no admite ningún valor extraño (En la versión anterior de Juice Shop, el rating se guardaba en una columna de tipo entero, lo que permitía almacenar valores fuera del rango [1-5])
 
 
-Accede a las herramientas del desarrollador y localiza el botón. Usa el buscador y localiza el elemento "submitButton*. Observa la etiqueta que indica que el botón está desabilitado.
-
-![Disabled](../img/lab-25-G/202311101820.png)
-
-El hack consiste en modificar la etiqueta, de forma que se active el botón y se pueda enviar los datos del formulario. Como ***Rating*** no lo has tocado, está inicializado a nulo, por lo que eso mmismo será lo que se envíe al servidor.
-
-Haz doble clic en la etiqueta ***Disabled*** y elimínala. Haz clic en el botón ***Submit***, que permanecerá el gris pero estará activo.
 
 
 
