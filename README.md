@@ -56,5 +56,6 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
 7. Laboratorio 25-G: Validación de datos de entrada inapropiada (***Improper Input Validation***).
    - Registrar a un usuario con privilegios de administrador. 
    - Hacer un pedido que te hará rico.
+   - Registrar un usuario con privilegios de administrador.
    
 8. Laboratorio 25-H: Romper la autorización (***Broken Access Control***).
