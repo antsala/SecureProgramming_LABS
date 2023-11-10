@@ -130,6 +130,10 @@ Hacemos clic en el bótón del carrito y veremos como aparecen los dos productos
 ![Carrito](../img/lab-25-D/202211231952.png)
 
 
+Prevención: https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+
+
+
 ## Ejercicio 2. Exfiltrar el esquema de la base de datos.
 
 Los errores que aparecieron el el ejercicio anterior mostraron que la base de datos es ***SQLite***. Es esta base de datos, la tabla del sistema ***sqlite_schema*** contiene el esquema de la base de datos. En esta web, https://www.sqlite.org/faq.html, en el apartado 7, se nos explica los campos que tiene esta tabla. De ellos, el campo ***sql*** contiene la instrucción original que creó la base de datos.
@@ -260,6 +264,8 @@ Hash
 ```
 
 En el siguiente ejercicio intentaremos revertir el hash para obtener la contraseña.
+
+
 
 
 ## Ejercicio 4: Iniciar sesión con el usuario administrador.

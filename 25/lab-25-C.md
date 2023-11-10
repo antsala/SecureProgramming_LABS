@@ -48,7 +48,6 @@ Como resultado hemos encontrado la página oculta que mostrará nuestros avances
 ![Scoreboard](../img/lab-25-C/202211212038.png)
 
 
-
 ## Ejercicio 2: Descubrir la sección "Admin"
 
 En este reto se nos propone localizar la página oculta de administración. 
