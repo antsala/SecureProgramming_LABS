@@ -144,10 +144,33 @@ Modifica el JSON que manda la request, tal y como muestra la imagen. En color ro
 
 ![Modificada](../img/lab-25-H/202311111152.png)
 
+El ***ProductId: 10*** es el producto que deseamos que aparezca en la cesta de la víctima. ***BasketId: 1*** es la cesta de la víctima, que se corresponde con la del usuario Bender (Esta información ya la obtuvimos de un hackeo previo)
 
+Reenvía la request, dará un error porque efectivamente no es tu BasketId, pero la consulta de actualización en la base de datos se habrá realizado.
 
+Vamos a entrar con el usuario Bender y para ello procedemos a hackear su contraseña rápidamente a través del procedimiento de recuperación de la contraseña. Esto es así porque si el contenedor de Juice Shop se ha reiniciado, habremos perdido todos los cambios.
 
+En la página de login, escribe lo siguiente.
 
+En el email.
+```
+bender@juice-sh.op
+```
+
+y haz clic en el enlace  ***Forgot your Password?***. 
+
+En la respuesta a la pregunta de seguridad, escribe.
+```
+Stop'n'Drop
+```
+
+y pon una nueva contraseña.
+
+Ahora inicia sesión como Bender y observa el carrito.
+
+![Carrito](../img/lab-25-H/202311111153.png)
+
+En definitiva, la aplicación te autoriza a almacenar pedidos en la base de datos, pero no comprueba si el BasketId es el apropiado. De esta forma nos hemos saltado la autorización.
 
 ***FIN DEL LABORATORIO***
 
