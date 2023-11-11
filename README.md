@@ -52,7 +52,6 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Localizar en Internet información fugada del password de un usuario.
    - Determina la respuesta a la pregunta de seguridad de ***Emma***.
 
-
 7. Laboratorio 25-G: Validación de datos de entrada inapropiada (***Improper Input Validation***).
    - Registrar a un usuario con privilegios de administrador. 
    - Hacer un pedido que te hará rico.
@@ -64,3 +63,6 @@ Laboratorios para las formaciones de Programación Segura están en la URL https
    - Eliminar las reseñas de 5 estrellas de los clientes.
    - Poner una reseña a nombre de otro usuario.
    - Poner un producto adicional en la cesta de otro usuario.
+
+9. Laboratorio 25-I: Errores de configuración de seguridad (***Security Misconfiguration***).
+   - Usar una interfaz B2B antigua que no ha sido retirada convenientemente.

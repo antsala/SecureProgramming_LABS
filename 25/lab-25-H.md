@@ -108,7 +108,7 @@ Podrás ves una magnífica reseña del administrador de Juice Shop.
 ![Reseña](../img/lab-25-H/202311102043.png)
 
 
-## Ejercicio 2: Poner un producto adicional en la cesta de otro usuario.
+## Ejercicio 3: Poner un producto adicional en la cesta de otro usuario.
 
 ***OBJETIVO***: Agregar un producto en la cesta de otro cliente.
 
@@ -122,7 +122,7 @@ Podrás ves una magnífica reseña del administrador de Juice Shop.
 
 Inicia Burp y desactiva la interceptación.
 
-Lógate con tu usuario, fíjate en un producto, pero NO LO agregue a la cesta.
+Lógate con tu usuario, fíjate en un producto, pero NO LO agregues a la cesta.
 
 Activa la interceptación de Burp y haz clic en el botón ***Add to Basket*** en el producto.
 
@@ -146,7 +146,7 @@ Modifica el JSON que manda la request, tal y como muestra la imagen. En color ro
 
 El ***ProductId: 10*** es el producto que deseamos que aparezca en la cesta de la víctima. ***BasketId: 1*** es la cesta de la víctima, que se corresponde con la del usuario Bender (Esta información ya la obtuvimos de un hackeo previo)
 
-Reenvía la request, dará un error porque efectivamente no es tu BasketId, pero la consulta de actualización en la base de datos se habrá realizado.
+Reenvía la request, dará un error porque efectivamente no es tu ***BasketId***, pero la consulta de actualización en la base de datos se habrá realizado.
 
 Vamos a entrar con el usuario Bender y para ello procedemos a hackear su contraseña rápidamente a través del procedimiento de recuperación de la contraseña. Esto es así porque si el contenedor de Juice Shop se ha reiniciado, habremos perdido todos los cambios.
 
@@ -175,3 +175,4 @@ En definitiva, la aplicación te autoriza a almacenar pedidos en la base de dato
 ***FIN DEL LABORATORIO***
 
 
+[Vamos al siguiente lab](../25/lab-25-I.md)

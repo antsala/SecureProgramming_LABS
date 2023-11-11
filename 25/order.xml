@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <product>
+        <id>1</id>
+        <name>Apple Juice</name>
+        <quantity>120</quantity>
+    </product>
+    <product>
+        <id>2</id>
+        <name>Apple Pomace</name>
+        <quantity>50</quantity>
+    </product>
+    <product>
+        <id>3</id>
+        <name>Banana Juice</name>
+        <quantity>180</quantity>
+    </product>
+</order>
