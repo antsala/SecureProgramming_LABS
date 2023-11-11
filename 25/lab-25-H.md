@@ -108,6 +108,46 @@ Podrás ves una magnífica reseña del administrador de Juice Shop.
 ![Reseña](../img/lab-25-H/202311102043.png)
 
 
+## Ejercicio 2: Poner un producto adicional en la cesta de otro usuario.
+
+***OBJETIVO***: Agregar un producto en la cesta de otro cliente.
+
+***PISTAS***: 
+
+* Usa Burp para inspeccionar el tráfico que ocurre cuando agregas un producto a tu propia cesta. Estudia los parámetros que se envían en la request.
+* El hackeo se basa en la polución de parámetros de entrada, concretamente en repetir alguno de ellos.
+
+
+***RESOLUCIÓN***. Los pasos para resolver el reto son.
+
+Inicia Burp y desactiva la interceptación.
+
+Lógate con tu usuario, fíjate en un producto, pero NO LO agregue a la cesta.
+
+Activa la interceptación de Burp y haz clic en el botón ***Add to Basket*** en el producto.
+
+En la imagen puedes ver el token de autorización que se envía al servidor y que permite agregar el producto a tu cesta. En la parte inferior, puedes ver que el ***id del producto*** es el ***1***, que el ***id de tu cesta*** es la ***6*** (esto podría cambiar para cada uno de nosotros) y que la ***cantidad*** es ***1***.
+
+![request](../img/lab-25-H/202311111136.png)
+
+Desactiva la interceptación de Burp para que se procesen todas las resquest pendientes y se agregue el producto a tu cesta.
+
+La debilidad presente en la aplicación se basa en que es posible actualizar diferentes entradas de la base de datos a partir del mismo objeto JSON. El programa solo verifica la autorización una vez, puesto que el programador ha supuesto que todas las entradas serán del mismo usuario (mismo id de la cesta).
+
+Localiza en burp la request que añadió el producto a tu cesta. Es la que tiene ***/api/BasketItems*** en la URL.
+
+![Basketitem](../img/lab-25-H/202311111146.png)
+
+Con botón derecho envíala al ***Repeater*** y accede a la herramienta ***Repeater*** en el menú.
+
+Modifica el JSON que manda la request, tal y como muestra la imagen. En color rojo hemos marcado lo que debes añadir, mientras que en color amarillo se corresponde con el objeto JSON original.
+
+![Modificada](../img/lab-25-H/202311111152.png)
+
+
+
+
+
 
 ***FIN DEL LABORATORIO***
 
