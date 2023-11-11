@@ -44,12 +44,34 @@ Habilita las herramientas del desarrollador y abre el archivo de código fuente 
 
 ![uploader](../img/lab-25-I/202311111254.png)
 
-En una terminal, ejecuta el siguiente comando.
+En una terminal, ejecuta los siguientes comandos.
+```
+cd ~/SecureProgramming_LABS/25
 ```
 
 ```
+nano order.xml
+```
 
+Podrás ver un archivo XML que se utilizaba para realizar antiguamente los pedidos masivos.
 
+![xml](../img/lab-25-I/202311111305.png)
+
+Si bien la aplicación ya retiró la API para recibir este tipo de archivos, has comprobado que en ciertas partes del código no se ha retirado la capacidad de subir estos archivos (y debería haberse hecho).
+
+Vuelve a el formulario de reclamaciones e intenta subir el archivo ***order.xml***.
+
+![xml upload](../img/lab-25-I/202311111309.png)
+
+Como puedes ver, la aplicación permite subir el archivo.
+
+![xml upload 2](../img/lab-25-I/202311111310.png)
+
+Haz clic en el botón ***Submit***.
+
+Realmente no se produce hackeo alguno. Simplemente se está verificando una configuración de seguridad problemática, porque la aplicación no debería permitir subir archivos XML si ya no los usa. 
+
+La posibilidad de subir archivos al servidor podría hacer posible otros tipos de hackeos que usaran el archivo subido, por esto se considera un error en la configuración de seguridad de la aplicación.
 
 
 ***FIN DEL LABORATORIO***
